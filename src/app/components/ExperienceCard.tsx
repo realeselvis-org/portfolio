@@ -22,21 +22,33 @@ export default function ExperienceCard({ title, imageDesktop, imageMobile }: Pro
   useEffect(() => {
     const measureText = () => {
       if (!textRef.current) return;
-      const h = Math.round(textRef.current.getBoundingClientRect().height);
+  
+      const rect = textRef.current.getBoundingClientRect();
+      const h = Math.round(rect.height);
+  
+      console.log("📏 Medición del texto:");
+      console.log("rect completo:", rect);
+      console.log("Altura calculada (h):", h);
+      console.log("isMobile:", isMobile);
+  
       if (!isMobile) {
         setMeasuredTextHeight(h);
+        console.log("✅ Guardado en measuredTextHeight:", h);
       }
     };
-
+  
     measureText();
+  
     const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measureText) : null;
     if (ro && textRef.current) ro.observe(textRef.current);
+  
     window.addEventListener("resize", measureText);
     return () => {
       window.removeEventListener("resize", measureText);
       if (ro && textRef.current) ro.unobserve(textRef.current);
     };
   }, [isMobile]);
+  
 
   // Aplicamos la altura al wrapper de la imagen cuando isMobile === true
   useEffect(() => {
@@ -82,7 +94,7 @@ export default function ExperienceCard({ title, imageDesktop, imageMobile }: Pro
 
   return (
     <div ref={cardRef} className="experienceCard p-4 bg-gray-200 rounded-lg shadow">
-      <div className="section1 bg-blue-200 flex items-center justify-between p-2 rounded">
+      <div className="section1 bg-blue-200 flex items-center justify-between rounded">
         <div className="bg-red-200 p-2 rounded">
           <h2 className="font-semibold">{title}</h2>
         </div>
@@ -92,14 +104,14 @@ export default function ExperienceCard({ title, imageDesktop, imageMobile }: Pro
       </div>
 
       <div
-        className={`section2 bg-red-200 p-2 rounded transition-all duration-300 ${
+        className={`section2 bg-red-200 rounded transition-all duration-300 ${
           isMobile ? "flex items-center justify-between" : "grid"
         }`}
       >
         {/* wrapper: aplicamos height aquí, y usamos box-border para que incluya padding */}
         <div
           ref={imageWrapperRef}
-          className="p-2 rounded box-border overflow-hidden transition-[height] duration-300"
+          className="rounded box-border overflow-hidden transition-[height] duration-300"
         >
           <img
             src={isMobile ? imageMobile : imageDesktop}
@@ -108,7 +120,7 @@ export default function ExperienceCard({ title, imageDesktop, imageMobile }: Pro
           />
         </div>
 
-        <div ref={textRef} className="p-2 rounded">
+        <div ref={textRef} className="rounded">
           <h2 className="font-semibold">Text</h2>
           <p className="text-sm">Contenido variable que medimos en desktop.</p>
         </div>

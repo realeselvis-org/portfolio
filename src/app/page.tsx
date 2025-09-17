@@ -1,4 +1,6 @@
 import ExperienceCard from "./components/ExperienceCard";
+import MeasureDemo from "./components/MeasureDemo";
+
 
 
 export default function Home() {
@@ -29,6 +31,7 @@ export default function Home() {
         ))}
         <div className="p-4 bg-gray-200 rounded-lg shadow">Card 3</div>
       </div>
+      <MeasureDemo />
     </main>
   );
 }
