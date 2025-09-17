@@ -59,7 +59,7 @@ export default function ExperienceCard({
       if (textRef.current) ro.observe(textRef.current);
       if (imageRef.current) ro.observe(imageRef.current);
     }
-    
+
     // Escucha el evento de redimensionamiento de la ventana
     window.addEventListener("resize", measureElements);
 
@@ -80,7 +80,7 @@ export default function ExperienceCard({
         wrapper.style.height = "";
         return;
       }
-      
+
       // ¡El cálculo correcto!
       const desiredTotal = measuredImageDesktopHeight + measuredTextHeight;
       console.log(`✨ Aplicando altura en móvil: ${desiredTotal}px (Imagen D: ${measuredImageDesktopHeight} + Texto: ${measuredTextHeight})`);
@@ -90,10 +90,10 @@ export default function ExperienceCard({
         wrapper.style.height = `${desiredTotal}px`;
       }
     };
-    
+
     // Se ejecuta cada vez que cambia el estado de los valores medidos o el modo
     applyHeight();
-    
+
   }, [isMobile, measuredImageDesktopHeight, measuredTextHeight]);
 
   return (
@@ -109,39 +109,39 @@ export default function ExperienceCard({
       </div>
 
       <div
-        className={`section2 bg-red-200 rounded transition-all duration-300 ${
-          isMobile ? "flex items-stretch" : "grid"
-        }`}
+        className={`section2 py-10 bg-red-200 rounded transition-all duration-300 ${isMobile ? "flex items-stretch" : "grid"
+          }`}
       >
-      <div
-        ref={imageWrapperRef}
-        className="rounded box-border overflow-hidden flex-shrink-0"
-        style={{ height: isMobile ? `${measuredImageDesktopHeight}px` : "auto" }}
+        <div
+          ref={imageWrapperRef}
+          className="rounded box-border overflow-hidden flex-shrink-0"
+          style={{ height: isMobile ? `${measuredImageDesktopHeight}px` : "auto" }}
         >
-        <img
-          ref={imageRef}
-          src={isMobile ? imageMobile : imageDesktop}
-          alt={`${title} preview`}
-          className="h-full w-auto object-contain"
-        />
+          <img
+            ref={imageRef}
+            src={isMobile ? imageMobile : imageDesktop}
+            alt={`${title} preview`}
+            className="h-full w-auto object-contain"
+          />
+        </div>
+
+
+        <div
+          ref={textRef}
+          className={`rounded flex-1] ${isMobile ? "pl-4" : "pt-4" }`} // 👈 clave
+        >
+          <h2 className="font-semibold">Text</h2>
+          <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+        </div>
       </div>
 
-      <div
-        ref={textRef}
-        className="rounded flex-1 max-w-[50%]" // 👈 clave
-        >
-        <h2 className="font-semibold">Text</h2>
-        <p className="text-sm">Contenido variable que medimos en desktop.</p>
-      </div>
-    </div>
 
-
-      <div className="section3 bg-blue-200 flex items-center justify-between p-2 rounded">
+      <div className="section3 bg-blue-200 flex items-center justify-between rounded">
         <div className="bg-red-200 p-2 rounded">
           <h2 className="font-semibold">Labels</h2>
         </div>
 
-        <div className="bg-green-200 p-2 rounded">
+        <div className="bg-green-200 rounded">
           <label className="relative inline-flex items-center cursor-pointer leading-none align-middle">
             <input
               type="checkbox"
