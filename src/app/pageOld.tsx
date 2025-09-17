@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Experience from "./components/Experience";
+import Experience from "./components/ExperienceCard";
 
 export default function Home() {
   return (
