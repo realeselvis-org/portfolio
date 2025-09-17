@@ -108,32 +108,32 @@ export default function ExperienceCard({
         </div>
       </div>
 
-<div
-  className={`section2 bg-red-200 rounded transition-all duration-300 ${
-    isMobile ? "flex items-stretch" : "grid"
-  }`}
->
-  <div
-    ref={imageWrapperRef}
-    className="rounded box-border overflow-hidden flex-shrink-0"
-    style={{ height: isMobile ? `${measuredImageDesktopHeight}px` : "auto" }}
-  >
-    <img
-      ref={imageRef}
-      src={isMobile ? imageMobile : imageDesktop}
-      alt={`${title} preview`}
-      className="h-full w-auto object-contain"
-    />
-  </div>
+      <div
+        className={`section2 bg-red-200 rounded transition-all duration-300 ${
+          isMobile ? "flex items-stretch" : "grid"
+        }`}
+      >
+      <div
+        ref={imageWrapperRef}
+        className="rounded box-border overflow-hidden flex-shrink-0"
+        style={{ height: isMobile ? `${measuredImageDesktopHeight}px` : "auto" }}
+        >
+        <img
+          ref={imageRef}
+          src={isMobile ? imageMobile : imageDesktop}
+          alt={`${title} preview`}
+          className="h-full w-auto object-contain"
+        />
+      </div>
 
-  <div
-    ref={textRef}
-    className="rounded flex-1 max-w-[50%]" // 👈 clave
-  >
-    <h2 className="font-semibold">Text</h2>
-    <p className="text-sm">Contenido variable que medimos en desktop.</p>
-  </div>
-</div>
+      <div
+        ref={textRef}
+        className="rounded flex-1 max-w-[50%]" // 👈 clave
+        >
+        <h2 className="font-semibold">Text</h2>
+        <p className="text-sm">Contenido variable que medimos en desktop.</p>
+      </div>
+    </div>
 
 
       <div className="section3 bg-blue-200 flex items-center justify-between p-2 rounded">
