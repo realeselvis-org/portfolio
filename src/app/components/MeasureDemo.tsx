@@ -16,6 +16,8 @@ export default function MeasureDemo() {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  // Ref para el nuevo elemento
+  const newElementRef = useRef<HTMLDivElement | null>(null);
 
   const [cardWidth, setCardWidth] = useState<number>(0);
   const [textHeight, setTextHeight] = useState<number>(0);
@@ -41,10 +43,16 @@ export default function MeasureDemo() {
     setTextHeight(h);
     setComputed(total);
     setLastMeasuredAt(new Date().toLocaleTimeString());
+    
     // opcional: también actualizar el wrapper height para ver el efecto
     if (wrapperRef.current) {
       // no forzamos si computed === 0 (primer render)
       wrapperRef.current.style.height = `${total}px`;
+    }
+
+    // Actualizamos la altura del nuevo elemento
+    if (newElementRef.current) {
+      newElementRef.current.style.height = `${total}px`;
     }
   };
 
@@ -120,6 +128,17 @@ export default function MeasureDemo() {
               Contenido variable que usamos para medir la altura. Cambia el ancho de la ventana
               para ver cómo cambia la medida. Puedes pegar más texto aquí para ver reflows.
             </p>
+          </div>
+
+          {/* Nuevo elemento con altura computada */}
+          <div
+            ref={newElementRef}
+            className="bg-purple-300 transition-[height] duration-300"
+            style={{ height: computed ? `${computed}px` : "auto" }}
+          >
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-sm">Altura computada: {computed}px</span>
+            </div>
           </div>
         </div>
 
