@@ -8,12 +8,16 @@ type Props = {
   title: string;
   imageDesktop: string;
   imageMobile: string;
+  subtitle: string;
+  description: string;
 };
 
 export default function ExperienceCard({
   title,
   imageDesktop,
   imageMobile,
+  subtitle,
+  description
 }: Props) {
   const [isMobile, setIsMobile] = useState(false);
   const [measuredTextHeight, setMeasuredTextHeight] = useState(0);
@@ -97,7 +101,7 @@ export default function ExperienceCard({
   }, [isMobile, measuredImageDesktopHeight, measuredTextHeight]);
 
   return (
-    <div ref={cardRef} className="experienceCard p-4 bg-gray-200 rounded-lg shadow">
+    <div ref={cardRef} className="experienceCard flex flex-col  p-4 bg-gray-200 rounded-lg shadow">
       {/*... resto del código...*/}
       <div className="section1 bg-blue-200 flex items-center justify-between rounded">
         <div className="bg-red-200 p-2 rounded">
@@ -130,13 +134,13 @@ export default function ExperienceCard({
           ref={textRef}
           className={`rounded flex-1] ${isMobile ? "pl-4" : "pt-4" }`} // 👈 clave
         >
-          <h2 className="font-semibold">Text</h2>
-          <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+          <h2 className="font-mono font-semibold">{subtitle}</h2>
+          <p className="font-mono text-sm">{description} </p>
         </div>
       </div>
 
 
-      <div className="section3 bg-blue-200 flex items-center justify-between rounded">
+      <div className="section3 bg-blue-200 flex items-center justify-between rounded mt-auto">
         <div className="bg-red-200 p-2 rounded">
           <h2 className="font-semibold">Labels</h2>
         </div>
