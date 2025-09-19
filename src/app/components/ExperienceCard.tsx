@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Monitor, Smartphone } from "lucide-react";
+import { Monitor, Smartphone, Github, Star } from "lucide-react";
 
 type Props = {
   title: string;
@@ -10,6 +10,7 @@ type Props = {
   imageMobile: string;
   subtitle: string;
   description: string;
+  
 };
 
 export default function ExperienceCard({
@@ -38,10 +39,20 @@ export default function ExperienceCard({
       {/* Sección 1 */}
       <div className="section1 bg-blue-200 flex items-center justify-between rounded">
         <div className="bg-red-200 p-2 rounded">
-          <h2 className="font-semibold">{title}</h2>
+          <h3 className="font-semibold">{title}</h3>
         </div>
-        <div className="bg-green-200 p-2 rounded">
-          <h2 className="font-semibold">Buttons</h2>
+        <div className="bg-green-200">
+          <button
+            className="rounded-full p-2 h-12 w-12 
+                      bg-[#00514B] text-[#1Ddad2] 
+                      cursor-pointer flex items-center justify-center
+                      transition-all duration-300 ease-in-out
+                      hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)]
+                      hover:[text-shadow:0_0_7px_rgba(29,218,210,1)]
+                      active:scale-95"
+          >
+            <Github className="w-6 h-6 transition-all duration-300 ease-in-out hover:stroke-3" />
+          </button>        
         </div>
       </div>
 
@@ -85,24 +96,24 @@ export default function ExperienceCard({
               aria-label="Toggle desktop / mobile"
             />
 
-            <div className="w-28 h-12 bg-[#0f1720] rounded-full" />
+            <div className="w-32 h-12 bg-[#0f1720] rounded-full" />
 
             <span
               aria-hidden
-              className="absolute top-0 left-0 w-1/2 h-full bg-[rgba(6,182,212,0.14)] rounded-full
+              className="absolute top-0 left-0 w-3/5 h-full bg-[rgba(6,182,212,0.14)] rounded-3xl 
                              transition-transform duration-300 transform z-10
-                             peer-checked:translate-x-full shadow-[0_0_18px_rgba(6,182,212,0.18)]"
+                             scale-90 peer-checked:translate-x-68/100 shadow-[0_0_7px_1px_rgba(29,218,210,1)]"
             />
 
             <Monitor
               aria-hidden
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
-                             transition-all duration-200 peer-checked:opacity-40 peer-checked:scale-90"
+              className="absolute left-1/5 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
+                             transition-all scale-110 duration-200 peer-checked:opacity-40 peer-checked:scale-90 peer-checked:left-5"
             />
             <Smartphone
               aria-hidden
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
-                             opacity-40 scale-90 transition-all duration-200 peer-checked:opacity-100 peer-checked:scale-100"
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
+                             opacity-40 scale-90 transition-all duration-200 peer-checked:opacity-100 peer-checked:scale-110 peer-checked:right-1/5"
             />
           </label>
         </div>
