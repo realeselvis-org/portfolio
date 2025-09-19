@@ -8,97 +8,34 @@ type Props = {
   title: string;
   imageDesktop: string;
   imageMobile: string;
+  subtitle: string;
+  description: string;
 };
 
 export default function ExperienceCard({
   title,
   imageDesktop,
   imageMobile,
+  subtitle,
+  description
 }: Props) {
-  const [isMobile, setIsMobile] = useState(false);
-  const [measuredTextHeight, setMeasuredTextHeight] = useState(0);
-  // Nuevo estado para la altura de la imagen en desktop
-  const [measuredImageDesktopHeight, setMeasuredImageDesktopHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(true);
+  const [initialHeight, setInitialHeight] = useState<number | null>(null);
 
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const imageWrapperRef = useRef<HTMLDivElement | null>(null);
+  const section2Ref = useRef<HTMLDivElement | null>(null);
 
-  // Mide la altura del div de texto Y de la imagen en desktop.
+  // 📏 Medir altura solo la primera vez en modo móvil
   useEffect(() => {
-    const measureElements = () => {
-      // Si estamos en modo móvil, no medimos los elementos de desktop.
-      if (isMobile) {
-        return;
-      }
-
-      // Medición del texto
-      if (textRef.current) {
-        const textHeight = Math.round(textRef.current.getBoundingClientRect().height);
-        setMeasuredTextHeight(textHeight);
-        console.log("✅ Altura del texto guardada:", textHeight);
-      }
-
-      // Medición de la imagen en desktop
-      if (imageRef.current) {
-        const imageDesktopHeight = Math.round(imageRef.current.getBoundingClientRect().height);
-        setMeasuredImageDesktopHeight(imageDesktopHeight);
-        console.log("✅ Altura de la imagen en desktop guardada:", imageDesktopHeight);
-      }
-    };
-
-    // Medición inicial al cargar el componente
-    measureElements();
-
-    const ro =
-      typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(measureElements)
-        : null;
-    if (ro) {
-      if (textRef.current) ro.observe(textRef.current);
-      if (imageRef.current) ro.observe(imageRef.current);
+    if (isMobile && section2Ref.current && initialHeight === null) {
+      const measured = section2Ref.current.getBoundingClientRect().height;
+      setInitialHeight(measured);
+      console.log("✅ Altura inicial guardada:", measured);
     }
-
-    // Escucha el evento de redimensionamiento de la ventana
-    window.addEventListener("resize", measureElements);
-
-    return () => {
-      window.removeEventListener("resize", measureElements);
-      if (ro) ro.disconnect();
-    };
-  }, [isMobile]);
-
-  // Aplica la altura al wrapper de la imagen cuando isMobile === true
-  useEffect(() => {
-    const applyHeight = () => {
-      const wrapper = imageWrapperRef.current;
-      if (!wrapper) return;
-
-      if (!isMobile) {
-        // En desktop, quita la altura forzada
-        wrapper.style.height = "";
-        return;
-      }
-
-      // ¡El cálculo correcto!
-      const desiredTotal = measuredImageDesktopHeight + measuredTextHeight;
-      console.log(`✨ Aplicando altura en móvil: ${desiredTotal}px (Imagen D: ${measuredImageDesktopHeight} + Texto: ${measuredTextHeight})`);
-
-      // Asegurarse de que el cálculo tenga un valor positivo antes de aplicar
-      if (desiredTotal > 0) {
-        wrapper.style.height = `${desiredTotal}px`;
-      }
-    };
-
-    // Se ejecuta cada vez que cambia el estado de los valores medidos o el modo
-    applyHeight();
-
-  }, [isMobile, measuredImageDesktopHeight, measuredTextHeight]);
+  }, [isMobile, initialHeight]);
 
   return (
-    <div ref={cardRef} className="experienceCard p-4 bg-gray-200 rounded-lg shadow">
-      {/*... resto del código...*/}
+    <div className="experienceCard flex flex-col p-4 bg-gray-200 rounded-lg shadow">
+      {/* Sección 1 */}
       <div className="section1 bg-blue-200 flex items-center justify-between rounded">
         <div className="bg-red-200 p-2 rounded">
           <h2 className="font-semibold">{title}</h2>
@@ -108,35 +45,32 @@ export default function ExperienceCard({
         </div>
       </div>
 
+      {/* Sección 2 */}
       <div
-        className={`section2 py-10 bg-red-200 rounded transition-all duration-300 ${isMobile ? "flex items-stretch" : "grid"
-          }`}
+        ref={section2Ref}
+        className={`section2 py-10 bg-red-200 rounded transition-all duration-300 ${
+          isMobile ? "flex items-center" : "grid"
+        }`}
+        style={{
+          minHeight: initialHeight ? `${initialHeight}px` : undefined
+        }}
       >
-        <div
-          ref={imageWrapperRef}
-          className="rounded box-border overflow-hidden flex-shrink-0"
-          style={{ height: isMobile ? `${measuredImageDesktopHeight}px` : "auto" }}
-        >
+        <div className={`rounded box-border overflow-hidden flex-shrink-0 ${ isMobile ? "w-1/2" : ""}`}>
           <img
-            ref={imageRef}
             src={isMobile ? imageMobile : imageDesktop}
             alt={`${title} preview`}
-            className="h-full w-auto object-contain"
+            className="w-full h-auto object-contain"
           />
         </div>
 
-
-        <div
-          ref={textRef}
-          className={`rounded flex-1] ${isMobile ? "pl-4" : "pt-4" }`} // 👈 clave
-        >
-          <h2 className="font-semibold">Text</h2>
-          <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+        <div className={`rounded flex-1 ${isMobile ? "pl-4" : "pt-4"}`}>
+          <h2 className="font-mono font-semibold">{subtitle}</h2>
+          <p className="font-mono text-sm">{description} </p>
         </div>
       </div>
 
-
-      <div className="section3 bg-blue-200 flex items-center justify-between rounded">
+      {/* Sección 3 */}
+      <div className="section3 bg-blue-200 flex items-center justify-between rounded mt-auto">
         <div className="bg-red-200 p-2 rounded">
           <h2 className="font-semibold">Labels</h2>
         </div>
