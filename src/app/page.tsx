@@ -5,7 +5,7 @@ export default function Home() {
   const cardsData = [
     {
       id: 1,
-      title: "Card 1",
+      title: "Título de un proyecto",
       imageDesktop:
       "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_6lwbhg.png",
       imageMobile:
