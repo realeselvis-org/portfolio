@@ -77,7 +77,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="max-w-7xl mx-auto p-8 bg-[#1C2A29]">
+    <main className="max-w-7xl mx-auto p-8">
       {/* Grid con tus cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {cardsData.map((c) => (
