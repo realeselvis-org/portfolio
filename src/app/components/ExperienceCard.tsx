@@ -44,11 +44,11 @@ export default function ExperienceCard({
   }, [isMobile, initialHeight]);
 
   return (
-    <div className="experienceCard flex flex-col bg-[#1C2A29] rounded-b-4xl shadow-[0_20px_18px_-4px_rgba(29,218,210,0.7)]">
+    <div className="experienceCard gap-12 flex flex-col bg-[#1C2A29] rounded-b-4xl shadow-[0_0px_18px_-4px_rgba(29,218,210,0.7)]">
       {/* Sección 1: Título + acciones */}
-      <div className="section1 flex items-center p-4 pb-0 justify-between rounded min-h-[100px]">
-        <div className="p-2 rounded">
-          <h3 className="font-mono font-semibold md:text-lg text-[#00514B]">{title}</h3>
+      <div className="section1 flex items-center p-4 pb-0 justify-between rounded">
+        <div className="flex gap-2  rounded">
+          <h3 className="font-allerta font-normal text-base text-[#00514B] leading-none">{title}</h3>
         </div>
 
         {/* Botones de acción */}
@@ -60,7 +60,7 @@ export default function ExperienceCard({
                 href={action.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full p-2 h-12 w-12 
+                className="rounded-full p-1.5 h-8 w-8 
                            bg-[#00514B] text-[#1Ddad2] 
                            cursor-pointer flex items-center justify-center
                            transition-all duration-300 ease-in-out
@@ -74,8 +74,8 @@ export default function ExperienceCard({
               <button
                 key={i}
                 onClick={action.onClick}
-                className="rounded-full p-2 h-12 w-12 
-                           bg-[#00514B] text-[#1Ddad2] 
+                className="rounded-full p-1.5 h-8 w-8
+                           bg-[#00514B] text-[#1Ddad2]
                            cursor-pointer flex items-center justify-center
                            transition-all duration-300 ease-in-out
                            hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)]
@@ -92,7 +92,7 @@ export default function ExperienceCard({
         {/* Sección 2: Imagen + descripción */}
         <div
           ref={section2Ref}
-          className={`section2 flex-1 py-10 mx-4 rounded transition-all duration-300  ${
+          className={`section2 flex-1 mx-4 rounded transition-all duration-300  ${
             isMobile ? "flex items-center" : "grid"
           }`}
           style={{
@@ -101,7 +101,7 @@ export default function ExperienceCard({
         >
           <div
             className={`rounded box-border overflow-hidden flex-shrink-0 ${
-              isMobile ? "max-w-1/3 " : ""
+              isMobile ? "max-w-1/2 " : ""
             }`}
           >
             <img
@@ -112,18 +112,18 @@ export default function ExperienceCard({
           </div>
 
           <div className={`rounded flex-1 ${isMobile ? "pl-4" : "pt-4"}`}>
-            <h2 className="font-mono font-semibold text-[#EFF9F7]">{subtitle}</h2>
-            <p className="font-mono text-sm text-[#EFF9F7]">{description}</p>
+            <h2 className="font-mono font-light antialiased text-sm text-[#EFF9F7]">{subtitle}</h2>
+            <p className="font-mono font-thin antialiased text-xs text-[#EFF9F7]">{description}</p>
           </div>
         </div>
 
         {/* Sección 3: Labels + Toggle (monitor / smartphone) */}
         <div className="section3 flex items-center justify-between rounded mt-auto m-4 ">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1">
             {labels.map((label, index) => (
               <span
                 key={index}
-                className="px-3 font-mono py-1 rounded-full bg-white text-xs shadow-sm border border-gray-300"
+                className="px-2 font-mono py-0.5 rounded-full bg-white text-[0.625rem] font-light shadow-sm border border-gray-300"
               >
                 {label}
               </span>
@@ -141,7 +141,7 @@ export default function ExperienceCard({
                 aria-label="Toggle desktop / mobile"
               />
 
-              <div className="w-32 h-12 bg-[#0f1720] rounded-full" />
+              <div className="w-24 h-8 bg-[#0f1720] rounded-full" />
 
               <span
                 aria-hidden
@@ -152,15 +152,15 @@ export default function ExperienceCard({
 
               <Monitor
                 aria-hidden
-                className="absolute left-1/5 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
+                className="absolute left-[21%] top-1/2 transform -translate-y-1/2 z-20 w-4 h-4 text-cyan-400
                           transition-all scale-110 duration-200 
-                          peer-checked:opacity-40 peer-checked:scale-90 peer-checked:left-5"
+                          peer-checked:opacity-40 peer-checked:scale-90 peer-checked:left-[16%]"
               />
               <Smartphone
                 aria-hidden
-                className="absolute right-5 top-1/2 transform -translate-y-1/2 z-20 w-6 h-6 text-cyan-400
+                className="absolute right-[16%] top-1/2 transform -translate-y-1/2 z-20 w-4 h-4 text-cyan-400
                           opacity-40 scale-90 transition-all duration-200 
-                          peer-checked:opacity-100 peer-checked:scale-110 peer-checked:right-1/5"
+                          peer-checked:opacity-100 peer-checked:scale-110 peer-checked:right-[21%]"
               />
             </label>
           </div>

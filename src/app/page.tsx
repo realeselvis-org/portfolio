@@ -30,7 +30,7 @@ export default function Home() {
           onClick: () => alert("⭐ Favorito!"), // acción onClick
         },
       ],
-      labels: ["React", "Tailwind", "Node.js"],
+      labels: ["Tailwind", "Node.js"],
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ export default function Home() {
           href: "https://github.com",
         },
       ],
-      labels: ["React", "Tailwind", "Node.js", "MongoDB"],
+      labels: ["Node.js", "MongoDB"],
     },
     {
       id: 3,
@@ -77,9 +77,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="max-w-7xl mx-auto p-8">
+    <main className="max-w-5xl 2xl:max-w-2/3 mx-auto p-8">
       {/* Grid con tus cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
         {cardsData.map((c) => (
           <ExperienceCard key={c.id} {...c} />
         ))}
