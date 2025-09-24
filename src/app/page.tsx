@@ -2,6 +2,7 @@
 "use client";
 
 import { Github, Star } from "lucide-react";
+import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
 
 export default function Home() {
@@ -77,9 +78,23 @@ export default function Home() {
   ];
 
   return (
-    <main className="max-w-5xl 2xl:max-w-2/3 mx-auto p-8">
+    <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8">
+      {/* HEADER */}
+      <header >
+        <Header
+          subtitle="Elvis Reales"
+          title="Desarrollador Web"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          image="https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/generated-image-september-15-2_1pdh0o1.png"
+          actions={[
+            { icon: <span>🚀</span>, href: "#projects" },
+            { icon: <span>📧</span>, onClick: () => alert("Contacto") },
+          ]}
+          labels={["React", "Next.js", "Tailwind"]}
+        />
+      </header>
       {/* Grid con tus cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-12">
         {cardsData.map((c) => (
           <ExperienceCard key={c.id} {...c} />
         ))}
