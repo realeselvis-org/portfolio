@@ -28,10 +28,10 @@ export default function Header({
         {/* Section 1 - Imagen */}
         <div className="flex justify-center">
 
-            {image && <img src={image} alt={title} className="md:w-full md:max-h-90 2xl:max-h-[34rem] rounded-lg" />}
+            {image && <img src={image} alt={title} className="max-h-[24rem] pb-12 md:pb-0 md:w-full md:max-h-90 2xl:max-h-[34rem] rounded-lg" />}
         </div>
         {/* section 2 - Texto y botnotes */}
-        <div className="grid content-between">
+        <div className="gap-6 md:gap-none grid content-between">
             <h2 className="font-mono text-base text-[#00514B] leading-none text-[#EFF9F7]">{subtitle}</h2>
             <h1 className="font-mono text-white text-3xl">{title}</h1>
             <p className="font-mono font-thin text-xs text-[#EFF9F7]">{description}</p>
