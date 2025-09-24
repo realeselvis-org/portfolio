@@ -48,7 +48,7 @@ export default function ExperienceCard({
       {/* Sección 1: Título + acciones */}
       <div className="section1 flex items-center p-4 pb-8 bg-[#1C2A29] relative z-10 justify-between">
         <div className="flex gap-2  rounded">
-          <h3 className="font-allerta font-normal text-base text-[#00514B] leading-none">{title}</h3>
+          <h3 className="font-normal text-base text-[#00514B] leading-none">{title}</h3>
         </div>
 
         {/* Botones de acción */}
