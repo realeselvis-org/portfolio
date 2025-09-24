@@ -44,9 +44,9 @@ export default function ExperienceCard({
   }, [isMobile, initialHeight]);
 
   return (
-    <div className="experienceCard gap-12 flex flex-col bg-[#1C2A29] rounded-b-4xl shadow-[0_0px_18px_-4px_rgba(29,218,210,0.7)]">
+    <div className="experienceCard flex flex-col bg-[#1C2A29] rounded-b-2xl">
       {/* Sección 1: Título + acciones */}
-      <div className="section1 flex items-center p-4 pb-0 justify-between rounded">
+      <div className="section1 flex items-center p-4 pb-8 bg-[#1C2A29] relative z-10 justify-between">
         <div className="flex gap-2  rounded">
           <h3 className="font-allerta font-normal text-base text-[#00514B] leading-none">{title}</h3>
         </div>
@@ -88,7 +88,8 @@ export default function ExperienceCard({
           )}
         </div>
       </div>
-
+      
+      <div className="flex flex-1 flex-col grid gap-8 shadow-[0_0px_18px_-4px_rgba(29,218,210,0.7)] rounded-b-2xl">
         {/* Sección 2: Imagen + descripción */}
         <div
           ref={section2Ref}
@@ -165,7 +166,7 @@ export default function ExperienceCard({
             </label>
           </div>
         </div>
-
+      </div>
     </div>
   );
 }
