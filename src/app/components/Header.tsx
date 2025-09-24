@@ -1,0 +1,69 @@
+type Action = {
+  icon: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
+};
+
+
+type Props = {
+    image: string;  
+    subtitle: string;
+    title: string;
+    description: string;
+    actions?: Action[]; // 👈 arreglo de botones opcional
+    labels?: string[]; // <-- prop opcional
+};
+
+
+export default function Header({
+  image,
+  subtitle,
+  title,
+  description,
+  actions = [],
+  labels = [],
+}: Props) {
+  return (
+    <div className="gap-4 md:flex h-full items-stretch justify-between">
+        {/* Section 1 - Imagen */}
+        <div className="flex justify-center">
+
+            {image && <img src={image} alt={title} className="md:w-full md:max-h-90 2xl:max-h-[34rem] rounded-lg" />}
+        </div>
+        {/* section 2 - Texto y botnotes */}
+        <div className="grid content-between">
+            <h2 className="font-mono text-base text-[#00514B] leading-none text-[#EFF9F7]">{subtitle}</h2>
+            <h1 className="font-mono text-white text-3xl">{title}</h1>
+            <p className="font-mono font-thin text-xs text-[#EFF9F7]">{description}</p>
+
+
+
+            {actions.length > 0 && (
+                <div className="flex gap-2 mt-4">
+                {actions.map((action, i) => (
+                    <button
+                    key={i}
+                    onClick={action.onClick}
+                    className="bg-[#00DADA] text-black px-4 py-2 rounded flex items-center gap-2 hover:bg-[#00c0c0] transition"
+                    >
+                    {action.icon}
+                    {action.href ? <a href={action.href}>{action.href}</a> : null}
+                    </button>
+                ))}
+                </div>
+            )}
+
+            {labels.length > 0 && (
+                <div className="flex gap-2 mt-2">
+                {labels.map((label, i) => (
+                    <span key={i} className="bg-white/20 text-white px-2 py-1 rounded text-sm">
+                    {label}
+                    </span>
+                ))}
+                </div>
+            )}
+        </div>
+    </div>
+  );
+}
+
