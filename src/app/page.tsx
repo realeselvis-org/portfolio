@@ -94,7 +94,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8">
+    <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-24">
       {/* HEADER */}
       <header>
         <Header
