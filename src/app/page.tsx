@@ -1,9 +1,9 @@
-// src/app/page.tsx
 "use client";
 
-import { Github, Star } from "lucide-react";
+import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
+import Timeline from "./components/Timeline"; 
 
 export default function Home() {
   const cardsData = [
@@ -20,15 +20,15 @@ export default function Home() {
       actions: [
         {
           icon: <Github className="w-6 h-6" />,
-          href: "https://github.com", // abre link externo
+          href: "https://github.com",
         },
-                {
+        {
           icon: <Github className="w-6 h-6" />,
-          href: "https://github.com", // abre link externo
+          href: "https://github.com",
         },
         {
           icon: <Star className="w-6 h-6" />,
-          onClick: () => alert("⭐ Favorito!"), // acción onClick
+          onClick: () => alert("⭐ Favorito!"),
         },
       ],
       labels: ["Tailwind", "Node.js"],
@@ -61,7 +61,6 @@ export default function Home() {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
       labels: ["React", "Tailwind"],
-
     },
     {
       id: 4,
@@ -73,14 +72,31 @@ export default function Home() {
       subtitle: "subtitle 4",
       description: "text4",
       labels: ["React"],
+    },
+  ];
 
+  // Eventos para el Timeline
+  const timelineEvents = [
+    {
+      title: "Proyecto iniciado",
+      description: "Definición del alcance y planificación inicial.",
+      icon: <Rocket className="w-3 h-3 text-blue-600" />,
+    },
+    {
+      title: "Desarrollo",
+      description: "Implementación de las funcionalidades principales.",
+      icon: <CheckCircle2 className="w-3 h-3 text-green-600" />,
+    },
+    {
+      title: "Lanzamiento",
+      description: "Publicación en producción 🚀",
     },
   ];
 
   return (
     <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8">
       {/* HEADER */}
-      <header >
+      <header>
         <Header
           subtitle="Elvis Reales"
           title="Desarrollador Web"
@@ -93,12 +109,22 @@ export default function Home() {
           labels={["React", "Next.js", "Tailwind"]}
         />
       </header>
-      {/* Grid con tus cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-12">
+
+      {/* Timeline */}
+      <section id="timeline" className="mt-20">
+        <h2 className="text-xl text-white font-bold mb-6">Mi Timeline</h2>
+        <Timeline events={timelineEvents} />
+      </section>
+
+      {/* Grid de cards */}
+      <h2 className="text-xl text-white font-bold mb-6">Proyects & Collabs</h2>
+
+      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-12">
         {cardsData.map((c) => (
           <ExperienceCard key={c.id} {...c} />
         ))}
-      </div>
+      </section>
+
     </main>
   );
 }
