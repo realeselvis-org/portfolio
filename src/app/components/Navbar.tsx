@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 
+import { FileUser, X, Menu,  } from "lucide-react";
+
+
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
   { name: "Team", href: "#", current: false },
@@ -27,23 +30,37 @@ export default function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
             >
-              {menuOpen ? "✖️" : "☰"}
+              {menuOpen ? (
+                <X
+                  aria-hidden
+                  className="w-5 h-5 text-cyan-400 opacity-80 transition-all duration-200"
+                />
+              ) : (
+                <Menu
+                  aria-hidden
+                  className="w-5 h-5 text-cyan-400 opacity-80 transition-all duration-200"
+                />
+              )}
             </button>
           </div>
 
           {/* Logo */}
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex shrink-0 items-center">
-              <img
-                alt="Logo"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+          <div className="hidden sm:flex flex-1 items-center justify-center sm:items-stretch sm:justify-start bg-red-200">
+            <div className="flex shrink-0 items-center ">
+              <button
+                onClick={() => console.log("Logo clicado")}
+                className="p-2 rounded-md bg-[#00514B] hover:bg-gray-700 transition-colors"
+              >
+                <FileUser
+                  aria-hidden
+                  className="h-6 w-6 text-cyan-400"
+                />
+              </button>
             </div>
 
             {/* Links desktop */}
-            <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+            <div className="hidden sm:ml-6 sm:block sm:pl-32 bg-green-300">
+              <div className="flex space-x-4 bg-white">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -53,7 +70,7 @@ export default function Navbar() {
                       item.current
                         ? "bg-gray-900 text-white"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text-sm font-medium"
+                      "rounded-md px-3 py-2 text-sm font-medium leading-none"
                     )}
                   >
                     {item.name}
