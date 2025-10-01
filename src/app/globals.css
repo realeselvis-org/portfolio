@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.shadow-custom {
+  box-shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
+}

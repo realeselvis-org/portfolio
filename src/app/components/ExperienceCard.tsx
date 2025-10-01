@@ -89,7 +89,7 @@ export default function ExperienceCard({
         </div>
       </div>
       
-      <div className="flex flex-1 flex-col grid gap-8 shadow-[0_0px_18px_-4px_rgba(29,218,210,0.7)] rounded-b-2xl">
+      <div className="flex flex-1 flex-col grid gap-8 shadow-custom rounded-b-2xl">
         {/* Sección 2: Imagen + descripción */}
         <div
           ref={section2Ref}

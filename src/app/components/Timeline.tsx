@@ -27,7 +27,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
               </svg>
             )}
           </span>
-	        <div className="p-4 shadow-[0_0px_18px_-4px_rgba(29,218,210,0.7)] rounded-lg">
+	        <div className="p-4 shadow-custom rounded-lg">
             <div className="items-center justify-between mb-3 sm:flex">
               <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">2 hours ago</time>
               <div className="text-sm font-normal text-gray-200 lex dark:text-gray-300">Thomas Lean commented on  <a href="#" className="font-semibold text-gray-600 dark:text-white hover:underline">{event.title}</a></div>
