@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Toggle from "./ui/Toggle";
 import { Monitor, Smartphone } from "lucide-react";
 
 type Action = {
@@ -119,7 +120,7 @@ export default function ExperienceCard({
         </div>
 
         {/* Sección 3: Labels + Toggle (monitor / smartphone) */}
-        <div className="section3 flex items-center justify-between rounded mt-auto m-4 ">
+        <div className="section3 flex items-center justify-between bg-red-200  rounded mt-auto m-4 ">
           <div className="flex flex-wrap gap-1">
             {labels.map((label, index) => (
               <span
@@ -133,40 +134,19 @@ export default function ExperienceCard({
 
           {/* Toggle personalizado */}
           <div className="">
-            <label className="relative inline-flex items-center cursor-pointer leading-none align-middle">
-              <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={isMobile}
-                onChange={(e) => setIsMobile(e.target.checked)}
-                aria-label="Toggle desktop / mobile"
-              />
-
-              <div className="w-24 h-8 bg-[#0f1720] rounded-full" />
-
-              <span
-                aria-hidden
-                className="absolute top-0 left-0 w-3/5 h-full bg-[rgba(6,182,212,0.14)] rounded-3xl 
-                          transition-transform duration-300 transform z-10
-                          scale-90 peer-checked:translate-x-68/100 shadow-[0_0_7px_1px_rgba(29,218,210,1)]"
-              />
-
-              <Monitor
-                aria-hidden
-                className="absolute left-[21%] top-1/2 transform -translate-y-1/2 z-20 w-4 h-4 text-cyan-400
-                          transition-all scale-110 duration-200 
-                          peer-checked:opacity-40 peer-checked:scale-90 peer-checked:left-[16%]"
-              />
-              <Smartphone
-                aria-hidden
-                className="absolute right-[16%] top-1/2 transform -translate-y-1/2 z-20 w-4 h-4 text-cyan-400
-                          opacity-40 scale-90 transition-all duration-200 
-                          peer-checked:opacity-100 peer-checked:scale-110 peer-checked:right-[21%]"
-              />
-            </label>
+            <Toggle
+              checked={isMobile}
+              onChange={(checked) => setIsMobile(checked)}
+              leftIcon={<Monitor />}
+              rightIcon={<Smartphone />}
+              size="md"
+              variant="glow"
+            />
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+
