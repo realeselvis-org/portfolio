@@ -2,9 +2,9 @@
 
 /* Variables base (light por defecto) */
 :root {
-  --background: #1C2A29;
-  --foreground: #171717;
-  --shadow: -3px 7px 18px -3px rgba(19, 2, 2, 0.95);
+  --background: #ffffff; /* Color de fondo CLARO */
+  --foreground: #171717; /* Color de texto OSCURO */
+  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.15); /* Sombra clara */
   --custom-bg: #d6eceb;
 }
 
@@ -16,6 +16,15 @@
     --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
     --custom-bg: #1C2A29;
   }
+}
+
+/* 🎯 SOLUCIÓN: Definición para el modo oscuro controlado por el toggle */
+/* Cuando la clase "dark" está en <html>, ¡estas variables se aplican! */
+html.dark {
+  --background: #0a0a0a; /* Los valores que quieres para el tema oscuro */
+  --foreground: #ededed;
+  --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
+  --custom-bg: #1C2A29;
 }
 
 /* Temas personalizados */
