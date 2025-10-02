@@ -117,42 +117,48 @@ export default function Toggle({
                         isOn ? "translate-x-full" : "translate-x-0"
                       }`}
         />
-
-        {/* Ícono izquierdo */}
+        
+        {/* iconos (izquierda y derecha) */}
         {hasIcons && leftIcon && (
-          <div className={`absolute ${leftGap} top-[55%] transform -translate-y-1/2 z-20`}>
+        <div
+            className={`absolute ${leftGap} top-1/2 -translate-y-1/2 z-20`}
+        >
             <span
-              aria-hidden
-              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
+            aria-hidden
+            className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
                 isOn ? "opacity-40 scale-90" : "opacity-100 scale-100"
-              }`}
+            }`}
             >
-              {React.isValidElement(leftIcon)
-                ? React.cloneElement(leftIcon as React.ReactElement<{ className?: string }>, {
-                    className: `${(leftIcon.props as any)?.className ?? ""} ${s.iconSize}`,
-                  })
-                : leftIcon}
+            {React.isValidElement(leftIcon)
+                ? React.cloneElement(leftIcon as React.ReactElement<any>, {
+                    className: `${(leftIcon.props as any)?.className ?? ""} ${s.iconSize}`.trim(),
+                })
+                : <span className={s.iconSize}>{leftIcon}</span>}
             </span>
-          </div>
+        </div>
         )}
 
-        {/* Ícono derecho */}
         {hasIcons && rightIcon && (
-          <div className={`absolute ${rightGap} top-[55%] transform -translate-y-1/2 z-20`}>
+        <div
+            className={`absolute ${rightGap} top-1/2 -translate-y-1/2 z-20`}
+        >
             <span
-              aria-hidden
-              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
+            aria-hidden
+            className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
                 isOn ? "opacity-100 scale-110" : "opacity-40 scale-90"
-              }`}
+            }`}
             >
-              {React.isValidElement(rightIcon)
-                ? React.cloneElement(rightIcon as React.ReactElement<{ className?: string }>, {
-                    className: `${(rightIcon.props as any)?.className ?? ""} ${s.iconSize}`,
-                  })
-                : rightIcon}
+            {React.isValidElement(rightIcon)
+                ? React.cloneElement(rightIcon as React.ReactElement<any>, {
+                    className: `${(rightIcon.props as any)?.className ?? ""} ${s.iconSize}`.trim(),
+                })
+                : <span className={s.iconSize}>{rightIcon}</span>}
             </span>
-          </div>
+        </div>
         )}
+
+
+
       </label>
     </div>
   );
