@@ -120,7 +120,7 @@ export default function ExperienceCard({
         </div>
 
         {/* Sección 3: Labels + Toggle (monitor / smartphone) */}
-        <div className="section3 flex items-center justify-between bg-red-200  rounded mt-auto m-4 ">
+        <div className="section3 flex items-center justify-between rounded mt-auto m-4 ">
           <div className="flex flex-wrap gap-1">
             {labels.map((label, index) => (
               <span

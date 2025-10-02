@@ -43,24 +43,24 @@ export default function Toggle({
 
   const sizeMap = {
     sm: { 
-      container: "w-16 h-7", 
-      thumb: "w-1/2", 
-      icon: "w-2 h-2", 
-      gap: "left-2 right-2",
-      iconSize: "w-2 h-2"
-    },
-    md: { 
       container: "w-14 h-6 p-2", 
       thumb: "w-1/2", 
       icon: "w-3 h-3", 
       gap: "left-2 right-2 flex items-center",
       iconSize: "w-4 h-4"
     },
+    md: { 
+      container: "w-19 h-7 p-2", 
+      thumb: "w-1/2", 
+      icon: "w-3.5 h-3.5", 
+      gap: "left-3 right-3 flex items-center",
+      iconSize: "w-6 h-6"
+    },
     lg: { 
       container: "w-32 h-10", 
       thumb: "w-1/2", 
       icon: "w-5 h-5", 
-      gap: "left-4 right-4",
+      gap: "left-5.5 right-5.5",
       iconSize: "w-5 h-5"
     },
   } as const;
@@ -90,7 +90,7 @@ export default function Toggle({
   const [leftGap, rightGap] = s.gap.split(" ");
 
   return (
-    <div className={`${className} bg-yellow-300 flex items-center`}>
+    <div className={`${className} flex items-center`}>
       <label
         role="switch"
         aria-checked={isOn}
