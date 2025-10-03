@@ -3,7 +3,8 @@
 import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
-import Timeline from "./components/Timeline"; 
+import Timeline from "./components/Timeline";
+import ThemeDemo from "./components/ThemeDemo"; 
 
 export default function Home() {
   const cardsData = [
@@ -109,6 +110,11 @@ export default function Home() {
           labels={["React", "Next.js", "Tailwind"]}
         />
       </header>
+
+      {/* Theme Demo */}
+      <section className="mt-20">
+        <ThemeDemo />
+      </section>
 
       {/* Timeline */}
       <section id="timeline" className="mt-20">

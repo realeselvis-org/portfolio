@@ -1,14 +1,15 @@
 // src/components/ui/Toggle.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export type ToggleProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
-  leftIcon?: React.ReactElement<SVGProps<SVGSVGElement>> | string;
-  rightIcon?: React.ReactElement<SVGProps<SVGSVGElement>> | string;
+  // ahora aceptamos cualquier ReactNode; lo manejamos internamente
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   size?: "sm" | "md" | "lg";
   variant?: "glow" | "flat" | "contrast";
   className?: string;
@@ -42,26 +43,26 @@ export default function Toggle({
   }
 
   const sizeMap = {
-    sm: { 
-      container: "w-14 h-6 p-2", 
-      thumb: "w-1/2", 
-      icon: "w-3 h-3", 
-      gap: "left-2 right-2 flex items-center",
-      iconSize: "w-4 h-4"
+    sm: {
+      container: "w-16 h-7 p-1",
+      thumb: "w-1/2",
+      icon: "w-3 h-3",
+      gap: "left-2 right-2",
+      iconSize: "w-4 h-4",
     },
-    md: { 
-      container: "w-19 h-7 p-2", 
-      thumb: "w-1/2", 
-      icon: "w-3.5 h-3.5", 
-      gap: "left-3 right-3 flex items-center",
-      iconSize: "w-6 h-6"
+    md: {
+      container: "w-24 h-8 p-2",
+      thumb: "w-1/2",
+      icon: "w-4 h-4",
+      gap: "left-3 right-3",
+      iconSize: "w-6 h-6",
     },
-    lg: { 
-      container: "w-32 h-10", 
-      thumb: "w-1/2", 
-      icon: "w-5 h-5", 
-      gap: "left-5.5 right-5.5",
-      iconSize: "w-5 h-5"
+    lg: {
+      container: "w-32 h-10 p-2",
+      thumb: "w-1/2",
+      icon: "w-5 h-5",
+      gap: "left-4 right-4",
+      iconSize: "w-5 h-5",
     },
   } as const;
 
@@ -87,7 +88,25 @@ export default function Toggle({
   } as const;
 
   const v = variantMap[variant];
-  const [leftGap, rightGap] = s.gap.split(" ");
+
+  // robustez: split seguro para left/right gap
+  const gapParts = s.gap.split(/\s+/);
+  const leftGap = gapParts[0] ?? "left-3";
+  const rightGap = gapParts[1] ?? "right-3";
+
+  // helper: renderiza icono de forma segura y tipada (evitamos `any`)
+  const renderIcon = (icon: React.ReactNode, sizeClass: string) => {
+    if (React.isValidElement(icon)) {
+      // si el ícono es un ReactElement, asumimos que puede ser un SVG y lo casteamos
+      const el = icon as React.ReactElement<SVGProps<SVGSVGElement>>;
+      // `el.props.className` está tipado y puede usarse sin `any`
+      return React.cloneElement(el, {
+        className: `${el.props.className ?? ""} ${sizeClass}`.trim(),
+      });
+    }
+    // si no es ReactElement (texto, número, etc.), lo envolvemos
+    return <span className={sizeClass}>{icon}</span>;
+  };
 
   return (
     <div className={`${className} flex items-center`}>
@@ -106,60 +125,42 @@ export default function Toggle({
         />
 
         {/* fondo de la píldora */}
-        <div
-          className={`${s.container} ${v.container} rounded-full`}
-        />
+        <div className={`${s.container} ${v.container} rounded-full`} />
 
         {/* thumb / glow (mueve con translate) */}
         <span
           aria-hidden
           className={`absolute top-0 left-0 ${s.thumb} h-full ${v.thumb} rounded-full z-10
-                      transition-transform duration-300 transform ${
-                        isOn ? "translate-x-full" : "translate-x-0"
-                      }`}
+                      transition-transform duration-300 transform ${isOn ? "translate-x-full" : "translate-x-0"}`}
         />
-        
-        {/* iconos (izquierda y derecha) */}
+
+        {/* ícono izquierdo */}
         {hasIcons && leftIcon && (
-        <div
-            className={`absolute ${leftGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}
-        >
+          <div className={`absolute ${leftGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}>
             <span
-            aria-hidden
-            className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
+              aria-hidden
+              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
                 isOn ? "opacity-40 scale-90" : "opacity-100 scale-100"
-            }`}
+              }`}
             >
-      {React.isValidElement(leftIcon)
-        ? React.cloneElement(leftIcon, {
-          className: `${('className' in leftIcon.props ? leftIcon.props.className : "")} ${s.iconSize}`.trim(),
-        })
-        : <span className={s.iconSize}>{leftIcon}</span>}
+              {renderIcon(leftIcon, s.iconSize)}
             </span>
-        </div>
+          </div>
         )}
 
+        {/* ícono derecho */}
         {hasIcons && rightIcon && (
-        <div
-            className={`absolute ${rightGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}
-        >
+          <div className={`absolute ${rightGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}>
             <span
-            aria-hidden
-            className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
+              aria-hidden
+              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
                 isOn ? "opacity-100 scale-110" : "opacity-40 scale-90"
-            }`}
+              }`}
             >
-      {React.isValidElement(rightIcon)
-        ? React.cloneElement(rightIcon, {
-          className: `${('className' in rightIcon.props ? rightIcon.props.className : "")} ${s.iconSize}`.trim(),
-        })
-        : <span className={s.iconSize}>{rightIcon}</span>}
+              {renderIcon(rightIcon, s.iconSize)}
             </span>
-        </div>
+          </div>
         )}
-
-
-
       </label>
     </div>
   );

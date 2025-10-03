@@ -8,23 +8,20 @@
   --custom-bg: #d6eceb;
 }
 
-/* Oscuro automático (prefiere dark mode del SO) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
-    --custom-bg: #1C2A29;
-  }
-}
-
-/* 🎯 SOLUCIÓN: Definición para el modo oscuro controlado por el toggle */
-/* Cuando la clase "dark" está en <html>, ¡estas variables se aplican! */
+/* Tema dark (cuando SO está en oscuro) */
 html.dark {
-  --background: #0a0a0a; /* Los valores que quieres para el tema oscuro */
+  --background: #0a0a0a;
   --foreground: #ededed;
   --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
   --custom-bg: #1C2A29;
+}
+
+/* Tema dark-custom (cuando SO está en claro pero usuario quiere oscuro) */
+html.dark-custom {
+  --background: #0f1720;
+  --foreground: #e8fafa;
+  --shadow: 0 0px 18px -4px rgba(29,218,210,0.8);
+  --custom-bg: #122221;
 }
 
 /* Temas personalizados */
@@ -43,11 +40,11 @@ html.dark {
 }
 
 /* Tailwind v4: mapear variables a tokens */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+  :root {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+  }
 }
 
 /* Utilidades personalizadas */
