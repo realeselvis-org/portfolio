@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Toggle from "./ui/Toggle";
+import { useThemeManager } from "../../hooks/useThemeManager";
 import { FileUser, X, Menu, Moon, Sun, Globe, ChevronDown } from "lucide-react";
 
 const navigation = [
@@ -18,19 +19,7 @@ function classNames(...classes: string[]) {
 export default function Navbar2() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-
-  // cada vez que cambia isDark, actualizamos <html>
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.remove("theme-dev-light");
-      root.classList.add("theme-dev-dark");
-    } else {
-      root.classList.remove("theme-dev-dark");
-      root.classList.add("theme-dev-light");
-    }
-  }, [isDark]);
+  const { isToggleOn, toggleTheme } = useThemeManager();
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
@@ -82,8 +71,8 @@ export default function Navbar2() {
             {/* Toggle para cambiar tema */}
             <div>
               <Toggle
-                checked={isDark}
-                onChange={(checked) => setIsDark(checked)}
+                checked={isToggleOn}
+                onChange={() => toggleTheme()}
                 leftIcon={<Sun />}
                 rightIcon={<Moon />}
                 size="md"

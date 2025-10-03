@@ -5,7 +5,6 @@ import { Terminal, Sun, Moon } from "lucide-react";
 
 
 export default function Footer() {
-    const [toggle, setToggle] = useState(false);
     const [isMobile, setIsMobile] = useState(true);
 
   return (
