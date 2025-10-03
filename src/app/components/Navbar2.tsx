@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Toggle from "./ui/Toggle";
 import { useThemeManager } from "../../hooks/useThemeManager";
 import { FileUser, X, Menu, Moon, Sun, Globe, ChevronDown } from "lucide-react";
@@ -19,7 +19,7 @@ function classNames(...classes: string[]) {
 export default function Navbar2() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const { isToggleOn, toggleTheme, theme, setTheme } = useThemeManager();
+  const { isToggleOn, toggleTheme } = useThemeManager();
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">

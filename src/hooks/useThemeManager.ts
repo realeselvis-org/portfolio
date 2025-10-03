@@ -9,7 +9,7 @@ export function useThemeManager() {
   const [theme, setTheme] = useState<Theme>("dark");
   const [isToggleOn, setIsToggleOn] = useState(true); // Toggle siempre inicia ON (dark)
 
-  // al montar: carga preferencia del usuario
+  // al montar: carga preferencia del usuario (solo si no está ya aplicado)
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     const savedToggle = localStorage.getItem("toggleState");
@@ -58,7 +58,7 @@ export function useThemeManager() {
     // Guardar estado
     localStorage.setItem("theme", theme);
     localStorage.setItem("toggleState", isToggleOn.toString());
-  }, [theme, isToggleOn, systemTheme]);
+  }, [theme, isToggleOn, systemTheme, getEffectiveTheme]);
 
   // Función para cambiar el toggle
   const toggleTheme = () => {

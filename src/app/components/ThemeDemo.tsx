@@ -1,9 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useThemeManager } from "../../hooks/useThemeManager";
 
 export default function ThemeDemo() {
   const { theme, isToggleOn, toggleTheme, setTheme, systemTheme } = useThemeManager();
+  const [htmlClassName, setHtmlClassName] = useState("");
+
+  useEffect(() => {
+    setHtmlClassName(document.documentElement.className);
+  }, [theme]);
 
   return (
     <div className="p-6 bg-background text-foreground border border-gray-300 rounded-lg shadow-custom">
@@ -21,7 +27,7 @@ export default function ThemeDemo() {
             <strong>Sistema Operativo:</strong> <span className="text-cyan-400">{systemTheme}</span>
           </div>
           <div>
-            <strong>Clase HTML:</strong> <span className="text-cyan-400">{document.documentElement.className}</span>
+            <strong>Clase HTML:</strong> <span className="text-cyan-400">{htmlClassName || "cargando..."}</span>
           </div>
         </div>
 
@@ -63,11 +69,11 @@ export default function ThemeDemo() {
         <div className="pt-4 border-t border-gray-300">
           <h4 className="font-semibold mb-2">Lógica del Sistema:</h4>
           <div className="text-sm space-y-1 text-gray-600">
-            <p>• <strong>Toggle ON + Normal + SO Oscuro:</strong> → "dark"</p>
-            <p>• <strong>Toggle ON + Normal + SO Claro:</strong> → "dark-custom"</p>
-            <p>• <strong>Toggle ON + Dev:</strong> → "dev-dark"</p>
-            <p>• <strong>Toggle OFF + Normal:</strong> → "light"</p>
-            <p>• <strong>Toggle OFF + Dev:</strong> → "dev-light"</p>
+            <p>• <strong>Toggle ON + Normal + SO Oscuro:</strong> → &quot;dark&quot;</p>
+            <p>• <strong>Toggle ON + Normal + SO Claro:</strong> → &quot;dark-custom&quot;</p>
+            <p>• <strong>Toggle ON + Dev:</strong> → &quot;dev-dark&quot;</p>
+            <p>• <strong>Toggle OFF + Normal:</strong> → &quot;light&quot;</p>
+            <p>• <strong>Toggle OFF + Dev:</strong> → &quot;dev-light&quot;</p>
           </div>
         </div>
       </div>

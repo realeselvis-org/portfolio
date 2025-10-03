@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-/* Variables base (light por defecto) */
+/* Variables base (dark por defecto - toggle siempre ON) */
 :root {
-  --background: #ffffff; /* Color de fondo CLARO */
-  --foreground: #171717; /* Color de texto OSCURO */
-  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.15); /* Sombra clara */
-  --custom-bg: #d6eceb;
+  --background: #0a0a0a; /* Color de fondo OSCURO por defecto */
+  --foreground: #ededed; /* Color de texto CLARO por defecto */
+  --shadow: 0 0px 18px -4px rgba(29,218,210,0.7); /* Sombra oscura */
+  --custom-bg: #1C2A29;
 }
 
 /* Tema dark (cuando SO está en oscuro) */
@@ -61,4 +61,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Tema light (solo cuando toggle está OFF) */
+html.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.15);
+  --custom-bg: #d6eceb;
 }
