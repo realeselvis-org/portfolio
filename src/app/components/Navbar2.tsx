@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Toggle from "./ui/Toggle";
-import { useThemeManager } from "../../hooks/useThemeManager";
+import { useThemeManagerContext } from "../../hooks/ThemeManagerContext";
+
 import { FileUser, X, Menu, Moon, Sun, Globe, ChevronDown } from "lucide-react";
 
 const navigation = [
@@ -19,7 +20,7 @@ function classNames(...classes: string[]) {
 export default function Navbar2() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const { isToggleOn, toggleTheme } = useThemeManager();
+  const { isToggleOn, toggleTheme } = useThemeManagerContext();
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
@@ -71,8 +72,8 @@ export default function Navbar2() {
             {/* Toggle para cambiar tema */}
             <div>
               <Toggle
-                checked={isToggleOn}
-                onChange={() => toggleTheme()}
+                checked={isToggleOn}         
+                onChange={toggleTheme}        
                 leftIcon={<Sun />}
                 rightIcon={<Moon />}
                 size="md"

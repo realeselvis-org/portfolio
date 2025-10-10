@@ -7,7 +7,6 @@ export type ToggleProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
-  // ahora aceptamos cualquier ReactNode; lo manejamos internamente
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   size?: "sm" | "md" | "lg";
@@ -18,7 +17,7 @@ export type ToggleProps = {
 
 export default function Toggle({
   checked,
-  defaultChecked = false,
+  defaultChecked = true,
   onChange,
   leftIcon,
   rightIcon,
