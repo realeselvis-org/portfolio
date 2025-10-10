@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
 
         {/* Derecha - Toggle Dev Mode */}
-        <div>
+        <div className="hidden">
           <label className="relative inline-flex items-center cursor-pointer leading-none align-middle">
             <input
               type="checkbox"

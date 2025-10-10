@@ -32,9 +32,9 @@ export default function Header({
         </div>
         {/* section 2 - Texto y botnotes */}
         <div className="gap-6 md:gap-none grid content-between">
-            <h1 className="font-mono text-white text-3xl text-center md:text-left">{title}</h1>
-            <h2 className="font-mono text-base text-[#00514B] leading-none text-[#EFF9F7] text-center md:text-left">{subtitle}</h2>
-            <p className="font-mono font-thin text-xs text-[#EFF9F7]">{description}</p>
+            <h1 className="font-mono text-3xl text-center md:text-left">{title}</h1>
+            <h2 className="font-mono text-base leading-none text-center md:text-left">{subtitle}</h2>
+            <p className="font-mono font-thin text-xs">{description}</p>
 
 
 
@@ -56,7 +56,7 @@ export default function Header({
             {labels.length > 0 && (
                 <div className="flex gap-2 mt-2 justify-center md:justify-start">
                 {labels.map((label, i) => (
-                    <span key={i} className="bg-white/20 text-white px-2 py-1 rounded text-sm">
+                    <span key={i} className="bg-white/20 px-2 py-1 rounded text-sm">
                     {label}
                     </span>
                 ))}
