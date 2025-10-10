@@ -1,80 +1,109 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { useSystemTheme } from "./useSystemTheme";
 
 type Theme = "light" | "dark" | "dark-custom" | "dev-dark" | "dev-light";
 
 export function useThemeManager() {
   const systemTheme = useSystemTheme();
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [isToggleOn, setIsToggleOn] = useState(true); // Toggle siempre inicia ON (dark)
 
-  // al montar: carga preferencia del usuario (solo si no está ya aplicado)
+  // Estados centrales
+  const [isDevMode, setIsDevMode] = useState<boolean>(false); // normal (false) | dev (true)
+  const [isToggleOn, setIsToggleOn] = useState<boolean>(true); // ON = oscuro, OFF = claro
+
+  // Cargar preferencias existentes (compatibilidad con formato previo)
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     const savedToggle = localStorage.getItem("toggleState");
-    
+
     if (savedTheme && savedToggle !== null) {
-      setTheme(savedTheme);
+      setIsDevMode(savedTheme.includes("dev"));
       setIsToggleOn(savedToggle === "true");
     } else {
-      // Primera vez: toggle ON, tema basado en SO
+      // Comportamiento por defecto (mantener tu preferencia antigua: toggle ON inicialmente)
       setIsToggleOn(true);
-      setTheme(systemTheme === "dark" ? "dark" : "dark-custom");
+      setIsDevMode(false);
     }
   }, [systemTheme]);
 
-  // Lógica principal: determina el tema basado en toggle y SO
-  const getEffectiveTheme = (): Theme => {
-    if (!isToggleOn) {
-      // Toggle OFF: siempre light o dev-light
-      return theme.includes("dev") ? "dev-light" : "light";
-    } else {
-      // Toggle ON: dark basado en SO o dark-custom, pero respeta dev
-      if (theme.includes("dev")) {
-        return "dev-dark";
-      }
-      return systemTheme === "dark" ? "dark" : "dark-custom";
-    }
-  };
+  // Tema efectivo calculado
+  const theme = useMemo<Theme>(() => {
+    if (isDevMode) return isToggleOn ? "dev-dark" : "dev-light";
+    // normal
+    return isToggleOn ? (systemTheme === "dark" ? "dark" : "dark-custom") : "light";
+  }, [isDevMode, isToggleOn, systemTheme]);
 
-  // aplica el tema al HTML
+  // Aplicar clase al <html> y persistir en localStorage
   useEffect(() => {
     const html = document.documentElement;
-    const effectiveTheme = getEffectiveTheme();
-    
-    // Limpiar todas las clases de tema
-    html.classList.remove("light", "dark", "theme-dev-light", "theme-dev-dark", "dark-custom");
+    // limpiar
+    html.classList.remove("light", "dark", "dark-custom", "theme-dev-light", "theme-dev-dark");
 
-    // Aplicar el tema efectivo
-    if (effectiveTheme === "dev-dark" || effectiveTheme === "dev-light") {
-      html.classList.add(`theme-${effectiveTheme}`);
-    } else if (effectiveTheme === "dark-custom") {
+    // aplicar
+    if (theme === "dev-dark" || theme === "dev-light") {
+      html.classList.add(`theme-${theme}`);
+    } else if (theme === "dark-custom") {
       html.classList.add("dark-custom");
     } else {
-      html.classList.add(effectiveTheme);
+      html.classList.add(theme);
     }
 
-    // Guardar estado
+    // persistir (guardamos el theme efectivo para compatibilidad)
     localStorage.setItem("theme", theme);
     localStorage.setItem("toggleState", isToggleOn.toString());
-  }, [theme, isToggleOn, systemTheme, getEffectiveTheme]);
+  }, [theme, isToggleOn]);
 
-  // Función para cambiar el toggle
-  const toggleTheme = () => {
-    setIsToggleOn(!isToggleOn);
-  };
+  // Handlers públicos
+  const toggleTheme = useCallback(() => {
+    setIsToggleOn((s) => !s);
+  }, []);
 
-  // Función para cambiar el tipo de tema (dev vs normal)
-  const setThemeType = (newTheme: Theme) => {
-    setTheme(newTheme);
-  };
+  // Setter explícito (mantiene compatibilidad con llamadas como setTheme("dev-light"))
+  const setThemeType = useCallback((newTheme: Theme) => {
+    switch (newTheme) {
+      case "light":
+        setIsDevMode(false);
+        setIsToggleOn(false);
+        break;
+      case "dark":
+        setIsDevMode(false);
+        setIsToggleOn(true);
+        break;
+      case "dark-custom":
+        setIsDevMode(false);
+        setIsToggleOn(true);
+        break;
+      case "dev-light":
+        setIsDevMode(true);
+        setIsToggleOn(false);
+        break;
+      case "dev-dark":
+        setIsDevMode(true);
+        setIsToggleOn(true);
+        break;
+      default:
+        // por seguridad: no hacer nada
+        break;
+    }
+  }, []);
 
-  return { 
-    theme: getEffectiveTheme(), 
-    setTheme: setThemeType, 
+  // Helpers de más alto nivel (no cambian claro/oscuro a menos que quieras)
+  const setModeNormal = useCallback(() => setIsDevMode(false), []);
+  const setModeDev = useCallback(() => setIsDevMode(true), []);
+  const toggleDevMode = useCallback(() => setIsDevMode((s) => !s), []);
+
+  return {
+    // lectura
+    theme, // tema efectivo (lo que debes mostrar en UI)
     systemTheme,
     isToggleOn,
-    toggleTheme
+    isDevMode,
+
+    // acciones
+    toggleTheme,    // invierte oscuro/ claro
+    setTheme: setThemeType, // setter explícito por compatibilidad
+    setModeNormal,  // cambiar a Normal (preserva isToggleOn)
+    setModeDev,     // cambiar a Dev (preserva isToggleOn)
+    toggleDevMode,  // invertir Normal <-> Dev
   };
 }
