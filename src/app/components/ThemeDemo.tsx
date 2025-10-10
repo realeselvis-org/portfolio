@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useThemeManager } from "../../hooks/useThemeManager";
+import { useThemeManagerContext } from "../../hooks/ThemeManagerContext";
 
 export default function ThemeDemo() {
-  const { theme, isToggleOn, toggleTheme, setTheme, systemTheme } = useThemeManager();
+  const { theme, isToggleOn, toggleTheme, setTheme, systemTheme } = useThemeManagerContext();
   const [htmlClassName, setHtmlClassName] = useState("");
 
   useEffect(() => {
