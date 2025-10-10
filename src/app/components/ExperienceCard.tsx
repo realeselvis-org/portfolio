@@ -49,7 +49,7 @@ export default function ExperienceCard({
       {/* Sección 1: Título + acciones */}
       <div className="section1 flex items-center p-4 pb-8 bg-custom relative z-10 justify-between">
         <div className="flex gap-2  rounded">
-          <h2 className="font-normal text-base text-[#00514B] leading-none">{title}</h2>
+          <h2 className="font-normal text-base leading-none">{title}</h2>
         </div>
 
         {/* Botones de acción */}
@@ -114,8 +114,8 @@ export default function ExperienceCard({
           </div>
 
           <div className={`rounded flex-1 ${isMobile ? "pl-4" : "pt-4"}`}>
-            <h3 className="font-mono font-light antialiased text-sm text-[#EFF9F7]">{subtitle}</h3>
-            <p className="font-mono font-thin antialiased text-xs text-[#EFF9F7]">{description}</p>
+            <h3 className="font-mono font-light antialiased text-sm">{subtitle}</h3>
+            <p className="font-mono font-thin antialiased text-xs">{description}</p>
           </div>
         </div>
 

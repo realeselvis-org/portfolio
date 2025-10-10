@@ -3,8 +3,7 @@
 import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
-import Timeline from "./components/Timeline";
-import ThemeDemo from "./components/ThemeDemo"; 
+import Timeline from "./components/Timeline"; 
 
 export default function Home() {
   const cardsData = [
@@ -81,12 +80,12 @@ export default function Home() {
     {
       title: "Proyecto iniciado",
       description: "Definición del alcance y planificación inicial.",
-      icon: <Rocket className="w-3 h-3 text-blue-600" />,
+      icon: <Rocket className="w-3 h-3" />,
     },
     {
       title: "Desarrollo",
       description: "Implementación de las funcionalidades principales.",
-      icon: <CheckCircle2 className="w-3 h-3 text-green-600" />,
+      icon: <CheckCircle2 className="w-3 h-3" />,
     },
     {
       title: "Lanzamiento",
@@ -111,19 +110,14 @@ export default function Home() {
         />
       </header>
 
-      {/* Theme Demo */}
-      <section className="mt-20">
-        <ThemeDemo />
-      </section>
-
       {/* Timeline */}
       <section id="timeline" className="mt-20">
-        <h2 className="text-xl text-white font-bold mb-6">Mi Timeline</h2>
+        <h2 className="text-xl font-bold mb-6">Mi Timeline</h2>
         <Timeline events={timelineEvents} />
       </section>
 
       {/* Grid de cards */}
-      <h2 className="text-xl text-white font-bold mb-6">Proyects & Collabs</h2>
+      <h2 className="text-xl font-bold mb-6">Proyects & Collabs</h2>
 
       <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-12">
         {cardsData.map((c) => (

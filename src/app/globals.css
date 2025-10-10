@@ -2,7 +2,7 @@
 
 /* Variables base (dark por defecto - toggle siempre ON) */
 :root {
-  --background: #0a0a0a; /* Color de fondo OSCURO por defecto */
+  --background: #1C2A29; /* Color de fondo OSCURO por defecto */
   --foreground: #ededed; /* Color de texto CLARO por defecto */
   --shadow: 0 0px 18px -4px rgba(29,218,210,0.7); /* Sombra oscura */
   --custom-bg: #1C2A29;
@@ -10,7 +10,7 @@
 
 /* Tema dark (cuando SO está en oscuro) */
 html.dark {
-  --background: #0a0a0a;
+  --background: #1C2A29;
   --foreground: #ededed;
   --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
   --custom-bg: #1C2A29;
@@ -18,7 +18,7 @@ html.dark {
 
 /* Tema dark-custom (cuando SO está en claro pero usuario quiere oscuro) */
 html.dark-custom {
-  --background: #0f1720;
+  --background: #122221;
   --foreground: #e8fafa;
   --shadow: 0 0px 18px -4px rgba(29,218,210,0.8);
   --custom-bg: #122221;
@@ -26,7 +26,7 @@ html.dark-custom {
 
 /* Temas personalizados */
 .theme-dev-light {
-  --background: #ffffff;
+  --background: #fffb0f;
   --foreground: #111111;
   --shadow: 0 0px 18px -4px rgba(255, 136, 0, 0.95);
   --custom-bg: #fffb0f;
@@ -65,8 +65,8 @@ body {
 
 /* Tema light (solo cuando toggle está OFF) */
 html.light {
-  --background: #ffffff;
+  --background: #d6eceb;
   --foreground: #171717;
-  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.15);
+  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.473);
   --custom-bg: #d6eceb;
 }
