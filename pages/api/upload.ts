@@ -1,3 +1,4 @@
+/* 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../lib/supabase'
 import prisma from '../../lib/prisma';
@@ -13,7 +14,7 @@ export const config = {
 
 
 // ejemplo simple: subes Buffer a Supabase Storage y guardas la URL en images.url
-/* 
+
 const { data, error } = await supabase.storage
   .from('images-bucket')
   .upload(`projects/${projectId}/${filename}`, fileBuffer, {
