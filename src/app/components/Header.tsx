@@ -10,8 +10,8 @@ type Props = {
     subtitle: string;
     title: string;
     description: string;
-    actions?: Action[]; // 👈 arreglo de botones opcional
-    labels?: string[]; // <-- prop opcional
+    actions?: Action[]; // Arreglo de botones
+    labels?: string[]; // Arreglo de etiquetas
 };
 
 

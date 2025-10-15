@@ -99,7 +99,7 @@ export default function Home() {
       <header>
         <Header
           subtitle="Elvis Reales"
-          title="Desarrollador Web"
+          title="Developer"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           image="https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/generated-image-september-15-2_1pdh0o1.png"
           actions={[
