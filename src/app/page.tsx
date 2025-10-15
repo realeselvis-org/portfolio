@@ -1,9 +1,11 @@
 "use client";
 
 import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
+
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
 import Timeline from "./components/Timeline"; 
+import { UploadImageForm } from "./components/UploadImageForm";
 
 export default function Home() {
   const cardsData = [
@@ -95,13 +97,15 @@ export default function Home() {
 
   return (
     <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-24">
+      {/* Upload*/}
+      <UploadImageForm />
       {/* HEADER */}
-      <header>
+      <header className="pt-12">
         <Header
           subtitle="Elvis Reales"
           title="Developer"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          image="https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/generated-image-september-15-2_1pdh0o1.png"
+          image="https://fnsvnvotzowxyongekui.supabase.co/storage/v1/object/sign/project-images/forLight.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kN2VlMzBiYS01ODIzLTQzMWUtYjM3MS02NjJlZmZkOTgwYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0LWltYWdlcy9mb3JMaWdodC53ZWJwIiwiaWF0IjoxNzYwNTU5NTUzLCJleHAiOjE3OTIwOTU1NTN9.U1sAU0UXUCZNAIcvD_ik6x7VqW0drWZTnMOjXL3K-cc"
           actions={[
             { icon: <span>🚀</span>, href: "#projects" },
             { icon: <span>📧</span>, onClick: () => alert("Contacto") },
