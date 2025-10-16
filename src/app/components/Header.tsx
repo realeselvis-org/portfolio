@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Action = {
   icon: React.ReactNode;
   href?: string;
@@ -27,11 +29,19 @@ export default function Header({
     <div className="gap-4 md:flex h-full items-stretch justify-between">
         {/* Section 1 - Imagen */}
         <div className="flex justify-center">
-
-            {image && <img src={image} alt={title} className="max-h-[24rem] pb-12 md:pb-0 md:w-full md:max-h-90 2xl:max-h-[34rem] rounded-lg" />}
+          {image && (
+            <Image
+              src={image}
+              alt={title}
+              width={320}
+              height={255}
+              sizes="(max-width: 768px) 100vw, 25vw"
+              className="rounded-lg object-contain"
+            />
+          )}
         </div>
-        {/* section 2 - Texto y botnotes */}
-        <div className="gap-6 md:gap-none grid content-between">
+        {/* section 2 - Texto y botnotes   */}
+        <div className="gap-6 md:gap-none grid content-between md:w-3/4">
             <h1 className="font-mono text-3xl text-center md:text-left">{title}</h1>
             <h2 className="font-mono text-base leading-none text-center md:text-left">{subtitle}</h2>
             <p className="font-mono font-thin text-xs">{description}</p>
