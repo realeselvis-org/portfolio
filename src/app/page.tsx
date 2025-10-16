@@ -4,7 +4,7 @@ import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
 
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
-import Timeline from "./components/Timeline"; 
+import Timeline from "./components/Timeline";
 import { UploadImageForm } from "./components/UploadImageForm";
 
 export default function Home() {
@@ -103,9 +103,9 @@ export default function Home() {
       <header className="pt-12">
         <Header
           subtitle="Elvis Reales"
-          title="Developer"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          image="https://fnsvnvotzowxyongekui.supabase.co/storage/v1/object/sign/project-images/forLight.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kN2VlMzBiYS01ODIzLTQzMWUtYjM3MS02NjJlZmZkOTgwYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0LWltYWdlcy9mb3JMaWdodC53ZWJwIiwiaWF0IjoxNzYwNTU5NTUzLCJleHAiOjE3OTIwOTU1NTN9.U1sAU0UXUCZNAIcvD_ik6x7VqW0drWZTnMOjXL3K-cc"
+          title="Desarrollador de Soluciones"
+          description="Desarrollador junior orientado a la creación de soluciones digitales. He trabajado en la depuración, integración y mantenimiento de plataformas como MasterTools y Mastershop, utilizando tecnologías web (HTML, CSS, JavaScript) y conectando servicios mediante APIs y webhooks. Busco aportar valor resolviendo problemas técnicos de manera práctica y escalable."
+          image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760649440/Header_wnwtrs.gif"
           actions={[
             { icon: <span>🚀</span>, href: "#projects" },
             { icon: <span>📧</span>, onClick: () => alert("Contacto") },
@@ -113,6 +113,7 @@ export default function Home() {
           labels={["React", "Next.js", "Tailwind"]}
         />
       </header>
+      
 
       {/* Timeline */}
       <section id="timeline" className="mt-20">
