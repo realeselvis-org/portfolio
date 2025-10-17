@@ -97,15 +97,16 @@ export default function Home() {
 
   return (
     <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-24">
-      {/* Upload*/}
+      {/* Upload
       <UploadImageForm />
+      */}
       {/* HEADER */}
       <header className="pt-12">
         <Header
           subtitle="Elvis Reales"
           title="Desarrollador de Soluciones"
           description="Desarrollador junior orientado a la creación de soluciones digitales. He trabajado en la depuración, integración y mantenimiento de plataformas como MasterTools y Mastershop, utilizando tecnologías web (HTML, CSS, JavaScript) y conectando servicios mediante APIs y webhooks. Busco aportar valor resolviendo problemas técnicos de manera práctica y escalable."
-          image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760649440/Header_wnwtrs.gif"
+          image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760725827/perfil2_tvultr.jpg"
           actions={[
             { icon: <span>🚀</span>, href: "#projects" },
             { icon: <span>📧</span>, onClick: () => alert("Contacto") },
