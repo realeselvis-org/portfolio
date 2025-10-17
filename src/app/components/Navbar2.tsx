@@ -41,8 +41,8 @@ export default function Navbar2() {
           {/* Buttom CV*/}
           <div className="hidden sm:flex items-center sm:items-stretch sm:justify-start">
             <button
-              onClick={() => console.log("Logo clicado")}
-              className="flex shrink-0 items-center p-2 rounded-md bg-[#00514B] hover:bg-gray-700 transition-colors"
+              onClick={() => window.open("https://drive.google.com/file/d/1ftNlP3Mlz7I_zjfBK5D_vUWtnDGqFpUR/view", "_blank")}
+              className="flex shrink-0 items-center p-2 rounded-md bg-[#00514B] hover:bg-gray-700 transition-colors cursor-pointer"
             >
               <FileUser className="h-6 w-6 text-cyan-400" />
             </button>
@@ -82,7 +82,7 @@ export default function Navbar2() {
             </div>
 
             {/* Dropdown Language */}
-            <div className="relative ml-3">
+            <div className="relative ml-3 hidden">
               <button
                 onClick={() => setProfileOpen(!profileOpen)}
                 className="flex items-center gap-1 px-3 py-2 rounded-md bg-[#00514B] text-white hover:bg-gray-700 transition-colors"
