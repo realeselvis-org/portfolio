@@ -1,6 +1,5 @@
-// src/components/ui/Toggle.tsx
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import type { SVGProps } from "react";
 
 export type ToggleProps = {
@@ -29,137 +28,140 @@ export default function Toggle({
   const isControlled = checked !== undefined;
   const [internal, setInternal] = useState<boolean>(defaultChecked);
 
-  useEffect(() => {
-    if (!isControlled) setInternal(defaultChecked);
-  }, [defaultChecked, isControlled]);
-
   const isOn = isControlled ? !!checked : internal;
 
   function toggle() {
-    const nv = !isOn;
-    if (!isControlled) setInternal(nv);
-    onChange?.(nv);
+    const newValue = !isOn;
+    if (!isControlled) setInternal(newValue);
+    onChange?.(newValue);
   }
 
   const sizeMap = {
     sm: {
-      container: "w-16 h-7 p-1",
-      thumb: "w-1/2",
-      icon: "w-3 h-3",
-      gap: "left-2 right-2",
-      iconSize: "w-4 h-4",
+      container: "w-14 h-7 p-1",
+      thumb: "w-5 h-5",
+      iconSize: "w-3.5 h-3.5",
     },
     md: {
-      container: "w-24 h-8 p-2",
-      thumb: "w-1/2",
-      icon: "w-4 h-4",
-      gap: "left-3 right-3",
-      iconSize: "w-6 h-6",
+      container: "w-16 h-8 p-1.5",
+      thumb: "w-6 h-6",
+      iconSize: "w-2 h-2",
     },
     lg: {
-      container: "w-32 h-10 p-2",
-      thumb: "w-1/2",
-      icon: "w-5 h-5",
-      gap: "left-4 right-4",
+      container: "w-24 h-10 p-2",
+      thumb: "w-8 h-8",
       iconSize: "w-5 h-5",
     },
   } as const;
-
   const s = sizeMap[size];
-  const hasIcons = Boolean(leftIcon) || Boolean(rightIcon);
 
   const variantMap = {
     glow: {
       container: "bg-[#0f1720] rounded-full",
-      thumb: "bg-[rgba(6,182,212,0.14)] shadow-[0_0_7px_1px_rgba(29,218,210,0.9)]",
-      icon: "text-cyan-400",
+      thumb:
+        "bg-[rgba(6,182,212,0.14)] shadow-[0_0_7px_1px_rgba(29,218,210,0.9)]",
+      iconActive: "text-cyan-400 scale-110",
+      iconInactive: "text-cyan-700 opacity-50",
     },
     flat: {
       container: "bg-gray-700",
       thumb: "bg-gray-300 shadow-none",
-      icon: "text-white",
+      iconActive: "text-white scale-110",
+      iconInactive: "text-gray-400 opacity-50",
     },
     contrast: {
-      container: "bg-white border border-gray-300",
-      thumb: "bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_4px_rgba(0,0,0,0.4)]",
-      icon: "text-gray-800",
+      container:
+        "bg-white border border-gray-300 shadow-inner rounded-full",
+      thumb:
+        "bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_5px_rgba(0,0,0,0.3)]",
+      iconActive: "text-gray-900 scale-110",
+      iconInactive: "text-gray-500 opacity-50",
     },
   } as const;
-
   const v = variantMap[variant];
 
-  // robustez: split seguro para left/right gap
-  const gapParts = s.gap.split(/\s+/);
-  const leftGap = gapParts[0] ?? "left-3";
-  const rightGap = gapParts[1] ?? "right-3";
-
-  // helper: renderiza icono de forma segura y tipada (evitamos `any`)
-  const renderIcon = (icon: React.ReactNode, sizeClass: string) => {
+  const renderIcon = (
+    icon: React.ReactNode,
+    active: boolean,
+    sizeClass: string
+  ) => {
     if (React.isValidElement(icon)) {
-      // si el ícono es un ReactElement, asumimos que puede ser un SVG y lo casteamos
       const el = icon as React.ReactElement<SVGProps<SVGSVGElement>>;
-      // `el.props.className` está tipado y puede usarse sin `any`
       return React.cloneElement(el, {
-        className: `${el.props.className ?? ""} ${sizeClass}`.trim(),
+        className: `${el.props.className ?? ""} ${sizeClass} transition-all duration-300 ${
+          active ? v.iconActive : v.iconInactive
+        }`.trim(),
       });
     }
-    // si no es ReactElement (texto, número, etc.), lo envolvemos
-    return <span className={sizeClass}>{icon}</span>;
+    return (
+      <span
+        className={`${sizeClass} transition-all duration-300 ${
+          active ? v.iconActive : v.iconInactive
+        }`}
+      >
+        {icon}
+      </span>
+    );
   };
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [thumbSize, setThumbSize] = useState<number | null>(null);
+  const [offLeft, setOffLeft] = useState<number>(0);
+  const [onLeft, setOnLeft] = useState<number>(0);
+
+  useEffect(() => {
+    const c = containerRef.current;
+    if (!c) return;
+    const style = getComputedStyle(c);
+    const paddingLeft = parseFloat(style.paddingLeft || "0");
+    const paddingRight = parseFloat(style.paddingRight || "0");
+    const w = c.clientWidth;
+    const h = c.clientHeight;
+    const thumb = h - paddingLeft - paddingRight - 2;
+    const off = paddingLeft;
+    const on = w - thumb - paddingRight;
+    setThumbSize(thumb);
+    setOffLeft(off);
+    setOnLeft(on);
+  }, [size]);
 
   return (
     <div className={`${className} flex items-center`}>
       <label
         role="switch"
         aria-checked={isOn}
-        className="relative inline-flex items-center cursor-pointer leading-none align-middle"
+        className="relative inline-flex items-center cursor-pointer select-none"
       >
-        {/* input (sr-only but focusable) */}
         <input
           type="checkbox"
-          className="sr-only peer"
+          className="sr-only"
           checked={isOn}
-          onChange={() => toggle()}
+          onChange={toggle}
           aria-label={ariaLabel}
         />
 
-        {/* fondo de la píldora */}
-        <div className={`${s.container} ${v.container} rounded-full`} />
-
-        {/* thumb / glow (mueve con translate) */}
-        <span
-          aria-hidden
-          className={`absolute top-0 left-0 ${s.thumb} h-full ${v.thumb} rounded-full z-10
-                      transition-transform duration-300 transform ${isOn ? "translate-x-full" : "translate-x-0"}`}
-        />
-
-        {/* ícono izquierdo */}
-        {hasIcons && leftIcon && (
-          <div className={`absolute ${leftGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}>
-            <span
-              aria-hidden
-              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
-                isOn ? "opacity-40 scale-90" : "opacity-100 scale-100"
-              }`}
-            >
-              {renderIcon(leftIcon, s.iconSize)}
-            </span>
+        <div
+          ref={containerRef}
+          className={`${s.container} ${v.container} relative flex items-center justify-between`}
+        >
+          <div className="absolute inset-0 flex items-center justify-between px-2">
+            {renderIcon(leftIcon, !isOn, s.iconSize)}
+            {renderIcon(rightIcon, isOn, s.iconSize)}
           </div>
-        )}
 
-        {/* ícono derecho */}
-        {hasIcons && rightIcon && (
-          <div className={`absolute ${rightGap} top-1/2 -translate-y-1/2 z-20 flex items-center`}>
-            <span
-              aria-hidden
-              className={`inline-flex items-center justify-center ${s.icon} ${v.icon} transition-all duration-200 ${
-                isOn ? "opacity-100 scale-110" : "opacity-40 scale-90"
-              }`}
-            >
-              {renderIcon(rightIcon, s.iconSize)}
-            </span>
-          </div>
-        )}
+          {/* thumb */}
+          <span
+            style={{
+              width: thumbSize ? `${thumbSize}px` : undefined,
+              height: thumbSize ? `${thumbSize}px` : undefined,
+              left: isOn ? `${onLeft}px` : `${offLeft}px`,
+              transform: isOn
+                ? "translateY(-50%) scale(1.1)"
+                : "translateY(-50%) scale(1)",
+            }}
+            className={`absolute top-1/2 rounded-full ${v.thumb} transition-all duration-300`}
+          />
+        </div>
       </label>
     </div>
   );
