@@ -82,16 +82,22 @@ export default function Home() {
     {
       title: "Proyecto iniciado",
       description: "Definición del alcance y planificación inicial.",
-      icon: <Rocket className="w-3 h-3" />,
+      icon: <Rocket className="w-5 h-5" />,
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
     {
       title: "Desarrollo",
       description: "Implementación de las funcionalidades principales.",
-      icon: <CheckCircle2 className="w-3 h-3" />,
+      icon: <CheckCircle2 className="w-5 h-5" />,
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
     {
       title: "Lanzamiento",
       description: "Publicación en producción 🚀",
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
   ];
 
@@ -127,7 +133,7 @@ export default function Home() {
             "MySQL",
             "APIs",
             "Python",
-            "Wordprees",
+            "Wordpress",
           ]} />
       </header>
 
