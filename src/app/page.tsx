@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Star, Rocket, CheckCircle2 } from "lucide-react";
+import { Github, Star, Rocket, CheckCircle2, Mail } from "lucide-react";
 
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
@@ -82,16 +82,22 @@ export default function Home() {
     {
       title: "Proyecto iniciado",
       description: "Definición del alcance y planificación inicial.",
-      icon: <Rocket className="w-3 h-3" />,
+      icon: <Rocket className="w-5 h-5" />,
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
     {
       title: "Desarrollo",
       description: "Implementación de las funcionalidades principales.",
-      icon: <CheckCircle2 className="w-3 h-3" />,
+      icon: <CheckCircle2 className="w-5 h-5" />,
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
     {
       title: "Lanzamiento",
       description: "Publicación en producción 🚀",
+      time: "Hace 2 horas",
+      link: "/proyecto",
     },
   ];
 
@@ -101,20 +107,36 @@ export default function Home() {
       <UploadImageForm />
       */}
       {/* HEADER */}
-      <header className="pt-12">
+      <header className="">
         <Header
           subtitle="Elvis Reales"
           title="Desarrollador de Soluciones"
-          description="Desarrollador junior orientado a la creación de soluciones digitales. He trabajado en la depuración, integración y mantenimiento de plataformas como MasterTools y Mastershop, utilizando tecnologías web (HTML, CSS, JavaScript) y conectando servicios mediante APIs y webhooks. Busco aportar valor resolviendo problemas técnicos de manera práctica y escalable."
+          description="Desarrollador junior orientado a la creación de soluciones digitales. He trabajado en la depuración, integración y mantenimiento de plataformas como MasterTools y Mastershop."
           image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760725827/perfil2_tvultr.jpg"
           actions={[
-            { icon: <span>🚀</span>, href: "#projects" },
-            { icon: <span>📧</span>, onClick: () => alert("Contacto") },
+            {
+              icon: <Mail className="w-5 h-5" />,
+              onClick: () => alert("realeselvis@gmail.com")
+            },
+            {
+              icon: <Github className="w-5 h-5" />,
+              href: "https://github.com/realeselvis",
+              target: "_blank",
+            },
           ]}
-          labels={["React", "Next.js", "Tailwind"]}
-        />
+          labels={[
+            "React",
+            "Next.js",
+            "Tailwind",
+            "TypeScript",
+            "Node.js",
+            "MySQL",
+            "APIs",
+            "Python",
+            "Wordpress",
+          ]} />
       </header>
-      
+
 
       {/* Timeline */}
       <section id="timeline" className="mt-20">
