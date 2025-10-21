@@ -40,7 +40,7 @@ export default function Toggle({
     sm: {
       container: "w-14 h-7 p-1",
       thumb: "w-5 h-5",
-      iconSize: "w-3.5 h-3.5",
+      iconSize: "w-1 h-1",
     },
     md: {
       container: "w-16 h-8 p-1.5",
@@ -48,9 +48,9 @@ export default function Toggle({
       iconSize: "w-2 h-2",
     },
     lg: {
-      container: "w-24 h-10 p-2",
+      container: "w-20 h-10 p-1.5",
       thumb: "w-8 h-8",
-      iconSize: "w-5 h-5",
+      iconSize: "w-3 h-3",
     },
   } as const;
   const s = sizeMap[size];
@@ -88,16 +88,14 @@ export default function Toggle({
     if (React.isValidElement(icon)) {
       const el = icon as React.ReactElement<SVGProps<SVGSVGElement>>;
       return React.cloneElement(el, {
-        className: `${el.props.className ?? ""} ${sizeClass} transition-all duration-300 ${
-          active ? v.iconActive : v.iconInactive
-        }`.trim(),
+        className: `${el.props.className ?? ""} ${sizeClass} transition-all duration-300 ${active ? v.iconActive : v.iconInactive
+          }`.trim(),
       });
     }
     return (
       <span
-        className={`${sizeClass} transition-all duration-300 ${
-          active ? v.iconActive : v.iconInactive
-        }`}
+        className={`${sizeClass} transition-all duration-300 ${active ? v.iconActive : v.iconInactive
+          }`}
       >
         {icon}
       </span>
@@ -144,12 +142,17 @@ export default function Toggle({
           ref={containerRef}
           className={`${s.container} ${v.container} relative flex items-center justify-between`}
         >
-          <div className="absolute inset-0 flex items-center justify-between px-2">
-            {renderIcon(leftIcon, !isOn, s.iconSize)}
-            {renderIcon(rightIcon, isOn, s.iconSize)}
+          {/* Íconos de fondo (inactivos, opacos) */}
+          <div className="absolute inset-0 flex items-center justify-between px-3 pointer-events-none">
+            <span className="opacity-90">
+              {renderIcon(leftIcon, false, s.iconSize)}
+            </span>
+            <span className="opacity-40">
+              {renderIcon(rightIcon, false, s.iconSize)}
+            </span>
           </div>
 
-          {/* thumb */}
+          {/* Thumb con ícono activo */}
           <span
             style={{
               width: thumbSize ? `${thumbSize}px` : undefined,
@@ -159,8 +162,14 @@ export default function Toggle({
                 ? "translateY(-50%) scale(1.1)"
                 : "translateY(-50%) scale(1)",
             }}
-            className={`absolute top-1/2 rounded-full ${v.thumb} transition-all duration-300`}
-          />
+            className={`absolute top-1/2 rounded-full ${v.thumb} transition-all duration-300 active:scale-x-135 flex items-center justify-center`}
+          >
+            <span className="pointer-events-none">
+              {isOn
+                ? renderIcon(rightIcon, true, s.iconSize)
+                : renderIcon(leftIcon, true, s.iconSize)}
+            </span>
+          </span>
         </div>
       </label>
     </div>

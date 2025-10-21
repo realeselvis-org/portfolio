@@ -76,7 +76,7 @@ export default function Navbar2() {
                 onChange={toggleTheme}        
                 leftIcon={<Sun />}
                 rightIcon={<Moon />}
-                size="md"
+                size="lg"
                 variant="glow"
               />
             </div>
