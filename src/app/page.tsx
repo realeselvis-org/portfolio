@@ -80,23 +80,23 @@ export default function Home() {
   // Eventos para el Timeline
   const timelineEvents = [
     {
-      title: "Proyecto iniciado",
-      description: "Definición del alcance y planificación inicial.",
+      title: "Sculapp",
+      description: "Manejo de tecnologías como PHP, JavaScript, HTML, Tailwind y React (entre otras, integrándolas en páginas desarrolladas en WordPress. ",
       icon: <Rocket className="w-5 h-5" />,
-      time: "Hace 2 horas",
+      time: "Febrero 2025 - Abril 2025",
       link: "/proyecto",
     },
     {
-      title: "Desarrollo",
-      description: "Implementación de las funcionalidades principales.",
+      title: "MasterTools",
+      description: "Implementación de las funcionalidades principales.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       icon: <CheckCircle2 className="w-5 h-5" />,
-      time: "Hace 2 horas",
+      time: "Julio 2024 -> Actualidad",
       link: "/proyecto",
     },
     {
-      title: "Lanzamiento",
+      title: "Futuros Residentes",
       description: "Publicación en producción 🚀",
-      time: "Hace 2 horas",
+      time: "Septiembre 2023 - Febrero 2024",
       link: "/proyecto",
     },
   ];
@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* Timeline */}
       <section id="timeline" className="mt-20">
-        <h2 className="text-xl font-bold mb-6">Mi Timeline</h2>
+        <h2 className="text-xl font-bold mb-6">Experiencia</h2>
         <Timeline events={timelineEvents} />
       </section>
 
