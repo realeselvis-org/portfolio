@@ -3,9 +3,9 @@ import Link from "next/link";
 
 type Action = {
   icon: React.ReactNode;
-  text?: string;         
+  text?: string;
   href?: string;
-  target?: "_blank" | "_self"; 
+  target?: "_blank" | "_self";
   onClick?: () => void;
 };
 
@@ -88,7 +88,7 @@ export default function Header({
         )}
 
         {labels.length > 0 && (
-          <div className="flex gap-1 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-1 justify-center md:justify-start">
             {labels.map((label, i) => (
               <span
                 key={i}
