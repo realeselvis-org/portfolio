@@ -80,11 +80,14 @@ export default function Home() {
   // Eventos para el Timeline
   const timelineEvents = [
     {
-      title: "Sculapp",
-      description: "Manejo de tecnologías como PHP, JavaScript, HTML, Tailwind y React (entre otras, integrándolas en páginas desarrolladas en WordPress. ",
-      icon: <Rocket className="w-5 h-5" />,
       time: "Febrero 2025 - Abril 2025",
+      tag: "Prácticas",
+      title: "Sculapp",
+      description: "Desarrollo de proyecto propio como parte del proceso formativo.",
+      largeDescription: "Elaboración de la documentación técnica y adopción de buenas prácticas de desarrollo, con el propósito de comprender de forma integral el ciclo de vida del software.",
+      icon: <Rocket className="w-5 h-5" />,
       link: "/proyecto",
+      labels: ["Tailwind", "Node.js"],
     },
     {
       title: "MasterTools",
