@@ -11,14 +11,13 @@ export default function Home() {
   const cardsData = [
     {
       id: 1,
-      title: "Título de un proyecto",
+      title: "Sculapp",
       imageDesktop:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_6lwbhg.png",
       imageMobile:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_vd8ili.png",
-      subtitle: "subtitle 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      // subtitle: "subtitle 1",
+      description: "Panel administrativo y gestión interna de usuarios para una plataforma de cursos médicos. Stack: Next.js, React Router, TailwindCSS, Apollo Client, GraphQL; despliegue con Docker y control de código con GitHub.",
       actions: [
         {
           icon: <Github className="w-6 h-6" />,
@@ -37,13 +36,13 @@ export default function Home() {
     },
     {
       id: 2,
-      title: "Card 2",
+      title: "Futuros Residentes",
       imageDesktop:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_6lwbhg.png",
       imageMobile:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_vd8ili.png",
-      subtitle: "subtitle 2",
-      description: "text2",
+      // subtitle: "subtitle 2",
+      description: "Migración a una estructura modular de bloques reutilizables con ACF en WordPress. Tecnologías: PHP, JavaScript, HTML, TailwindCSS; gestión de MySQL via phpMyAdmin, metodología SCRUM y control de versiones con Git.",
       actions: [
         {
           icon: <Github className="w-6 h-6" />,
@@ -54,26 +53,25 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "Card 3",
+      title: "FR · App Móvil",
       imageDesktop:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_6lwbhg.png",
       imageMobile:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_vd8ili.png",
-      subtitle: "subtitle 3",
+      // subtitle: "subtitle 3",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-      labels: ["React", "Tailwind"],
+        "Desarrollo y despliegue de apps móviles no-code integradas con WordPress mediante Adalo y AppMySite, con sincronización de contenido y publicación en tiendas móviles.",
     },
     {
       id: 4,
-      title: "Card 4",
+      title: "Sculapp",
       imageDesktop:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_6lwbhg.png",
       imageMobile:
         "https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_vd8ili.png",
-      subtitle: "subtitle 4",
-      description: "text4",
-      labels: ["React"],
+      // subtitle: "Plataforma Base",
+      description: "Rediseño y reestructuración de la plataforma base para ofrecer servicios a múltiples instituciones médicas; migración a bloques dinámicos con ACF.",
+      labels: ["PHP", "JavaScript", "HTML", "TailwindCSS", "MySQL", "phpMyAdmin", "SCRUM", "Git"],
     },
   ];
 
