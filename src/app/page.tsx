@@ -103,12 +103,32 @@ export default function Home() {
     {
       time: "Abr 2025 - Jun 2025",
       tag: "Colaborador recurrente",
-      title: "Desarrollador Junior · SculApp ",
+      title: "Desarrollador Junior · SculApp",
       description: "Desarrollo de la plataforma administrativa.",
       largeDescription: "Freelance para apoyar el desarrollo de la plataforma administrativa de la Clínica Panamericana, un nuevo cliente de la empresa.",
       icon: <SquareCode className="w-5 h-5" />,
       link: "#",
       labels: ["Freelance", "React", "Docker", "Tailwind"],
+    },
+    {
+      time: "Sep 2023 - Feb 2024",
+      tag: "Colaborador recurrente",
+      title: "Analista TI · Prácticas",
+      description: "Soporte de segundo nivel, desarrollo e integración web.",
+      largeDescription: "Apoyé al equipo de desarrollo en la implementación y mejora de sitios web, asegurando su correcta integración con sistemas internos. Brindé soporte técnico de segundo nivel, resolviendo incidencias y optimizando procesos. También colaboré en el despliegue de aplicaciones móviles conectadas con plataformas web y en la coordinación del trabajo bajo metodología ágil.",
+      icon: <SquareCode className="w-5 h-5" />,
+      link: "#",
+      labels: ["Wordpress", "HTML", "Tailwind", "PHP", "SQL"],
+    },
+    {
+      time: "Mar 2022 - Sep 2023",
+      tag: "Proyecto formativo",
+      title: "Carrera Técnica en Desarrollo de Software",
+      description: "Desarrollo de proyecto colaborativo institucional.",
+      largeDescription: "AFormación técnica en desarrollo de software orientada a proyectos reales. Como trabajo final, participé en la creación de un sistema de gestión documental para el SENA, fortaleciendo mis bases en trabajo en equipo y desarrollo estructurado.",
+      icon: <GraduationCap className="w-5 h-5" />,
+      link: "#",
+      labels: ["Boostrap", "Python", "HTML", "JavaScript", "CSS", "PHP", "SQL"],
     },
   ];
 
