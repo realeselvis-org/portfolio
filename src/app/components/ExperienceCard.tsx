@@ -15,8 +15,8 @@ type Props = {
   title: string;
   imageDesktop: string;
   imageMobile: string;
-  subtitle: string;
-  description: string;
+  subtitle?: string;
+  description: string | React.ReactNode
   actions?: Action[]; // arreglo de botones opcional
   labels?: string[]; // <-- prop opcional
 };
@@ -27,8 +27,8 @@ export default function ExperienceCard({
   imageMobile,
   subtitle,
   description,
-  actions = [], 
-  labels = [], 
+  actions = [],
+  labels = [],
 }: Props) {
   const [isMobile, setIsMobile] = useState(true);
   const [initialHeight, setInitialHeight] = useState<number | null>(null);
@@ -89,22 +89,20 @@ export default function ExperienceCard({
           )}
         </div>
       </div>
-      
+
       <div className="flex flex-1 flex-col grid gap-8 shadow-custom rounded-b-2xl">
         {/* Sección 2: Imagen + descripción */}
         <div
           ref={section2Ref}
-          className={`section2 flex-1 mx-4 rounded transition-all duration-300  ${
-            isMobile ? "flex items-center" : "grid"
-          }`}
+          className={`section2 flex-1 mx-4 rounded transition-all duration-300  ${isMobile ? "flex items-center" : "grid"
+            }`}
           style={{
             minHeight: initialHeight ? `${initialHeight}px` : undefined,
           }}
         >
           <div
-            className={`rounded box-border overflow-hidden flex-shrink-0 ${
-              isMobile ? "max-w-1/2 " : ""
-            }`}
+            className={`rounded box-border overflow-hidden flex-shrink-0 ${isMobile ? "max-w-1/2 " : ""
+              }`}
           >
             <img
               src={isMobile ? imageMobile : imageDesktop}
@@ -115,7 +113,7 @@ export default function ExperienceCard({
 
           <div className={`rounded flex-1 ${isMobile ? "pl-4" : "pt-4"}`}>
             <h3 className="font-mono font-light antialiased text-sm">{subtitle}</h3>
-            <p className="font-mono font-thin antialiased text-xs">{description}</p>
+            <p className="font-mono font-thin antialiased text-[10px]">{description}</p>
           </div>
         </div>
 
