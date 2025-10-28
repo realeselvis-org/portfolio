@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark-custom">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -60,14 +60,18 @@ export default function RootLayout({
                   }
                   
                   const html = document.documentElement;
-                  html.classList.remove('light', 'dark', 'theme-dev-light', 'theme-dev-dark', 'dark-custom');
                   
-                  if (effectiveTheme === 'dev-dark' || effectiveTheme === 'dev-light') {
-                    html.classList.add('theme-' + effectiveTheme);
-                  } else if (effectiveTheme === 'dark-custom') {
-                    html.classList.add('dark-custom');
-                  } else {
-                    html.classList.add(effectiveTheme);
+                  // Solo aplicar cambios si el tema es diferente al inicial
+                  if (effectiveTheme !== 'dark-custom') {
+                    html.classList.remove('light', 'dark', 'theme-dev-light', 'theme-dev-dark', 'dark-custom');
+                    
+                    if (effectiveTheme === 'dev-dark' || effectiveTheme === 'dev-light') {
+                      html.classList.add('theme-' + effectiveTheme);
+                    } else if (effectiveTheme === 'dark-custom') {
+                      html.classList.add('dark-custom');
+                    } else {
+                      html.classList.add(effectiveTheme);
+                    }
                   }
                 } catch (e) {
                   // Fallback: mantener tema oscuro por defecto (ya está en :root)

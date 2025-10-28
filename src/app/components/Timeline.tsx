@@ -36,7 +36,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
           </span>
 
           {/* Contenido */}
-          <div className="p-4 shadow-custom rounded-lg">
+          <div className="relative p-4 shadow-custom rounded-lg">
 
             {/* Fecha y tag */}
             <div className="">
@@ -104,7 +104,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
 
             {/* Labels */}
             {event.labels && event.labels.length > 0 && (
-              <div className="flex flex-wrap gap-1 justify-center md:justify-start mt-5">
+              <div className="flex flex-wrap gap-1 mt-5">
                 {event.labels.map((label, i) => (
                   <span
                     key={`${index}-label-${i}`}
