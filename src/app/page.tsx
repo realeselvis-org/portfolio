@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Star, Rocket, CheckCircle2, Mail } from "lucide-react";
+import { Github, Star, Rocket, CheckCircle2, Mail, GraduationCap, ArrowUpNarrowWide, SquareCode } from "lucide-react";
 
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
@@ -80,27 +80,35 @@ export default function Home() {
   // Eventos para el Timeline
   const timelineEvents = [
     {
-      time: "Febrero 2025 - Abril 2025",
-      tag: "Prácticas",
-      title: "Sculapp",
+      time: "Sep 2025 - Actualidad",
+      tag: "Proyecto formativo",
+      title: "Tecnología en Desarrollo de Software",
       description: "Desarrollo de proyecto propio como parte del proceso formativo.",
       largeDescription: "Elaboración de la documentación técnica y adopción de buenas prácticas de desarrollo, con el propósito de comprender de forma integral el ciclo de vida del software.",
-      icon: <Rocket className="w-5 h-5" />,
+      icon: <GraduationCap className="w-5 h-5" />,
       link: "/proyecto",
-      labels: ["Tailwind", "Node.js"],
+      // labels: ["Estudio "],
     },
     {
-      title: "MasterTools",
-      description: "Implementación de las funcionalidades principales.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      icon: <CheckCircle2 className="w-5 h-5" />,
-      time: "Julio 2024 -> Actualidad",
+      time: "Jul 2024 - Actualidad",
+      tag: "Ascenso",
+      title: "Soporte Técnico · Privilege Team",
+      description: "Constructor Web / Plataforma de Ecommerce.",
+      largeDescription: "Soporte técnico y asesoría en la creación y personalización de sitios, funnels y tiendas online. Acompañamiento en integraciones externas, APIs, automatizaciones con IA y consultas SQL.",
+      icon: <ArrowUpNarrowWide className="w-5 h-5" />,
       link: "/proyecto",
+      labels: ["SEO", "DNS", "HTML", "JavaScript"],
+
     },
     {
-      title: "Futuros Residentes",
-      description: "Publicación en producción 🚀",
-      time: "Septiembre 2023 - Febrero 2024",
-      link: "/proyecto",
+      time: "Abr 2025 - Jun 2025",
+      tag: "Colaborador recurrente",
+      title: "Desarrollador Junior · SculApp ",
+      description: "Desarrollo de la plataforma administrativa.",
+      largeDescription: "Freelance para apoyar el desarrollo de la plataforma administrativa de la Clínica Panamericana, un nuevo cliente de la empresa.",
+      icon: <SquareCode className="w-5 h-5" />,
+      link: "#",
+      labels: ["Freelance", "React", "Docker", "Tailwind"],
     },
   ];
 

@@ -17,7 +17,7 @@ type Props = {
   imageMobile: string;
   subtitle: string;
   description: string;
-  actions?: Action[]; // 👈 arreglo de botones opcional
+  actions?: Action[]; // arreglo de botones opcional
   labels?: string[]; // <-- prop opcional
 };
 
@@ -27,8 +27,8 @@ export default function ExperienceCard({
   imageMobile,
   subtitle,
   description,
-  actions = [], // por defecto vacío
-  labels = [], // por defecto vacío
+  actions = [], 
+  labels = [], 
 }: Props) {
   const [isMobile, setIsMobile] = useState(true);
   const [initialHeight, setInitialHeight] = useState<number | null>(null);

@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-/* Variables base (dark por defecto - toggle siempre ON) */
+/* Variables base (dark-custom por defecto - toggle siempre ON) */
 :root {
-  --background: #1C2A29; /* Color de fondo OSCURO por defecto */
-  --foreground: #ededed; /* Color de texto CLARO por defecto */
-  --shadow: 0 0px 18px -4px rgba(29,218,210,0.7); /* Sombra oscura */
-  --custom-bg: #1C2A29;
+  --background: #122221; /* Color de fondo OSCURO por defecto */
+  --foreground: #e8fafa; /* Color de texto CLARO por defecto */
+  --shadow: 0 0px 18px -4px rgba(29,218,210,0.8); /* Sombra oscura */
+  --custom-bg: #122221;
 }
 
 /* Tema dark (cuando SO está en oscuro) */
