@@ -7,11 +7,10 @@ export type TimelineEvent = {
   time?: string;
   tag?: string;
   title: string;
-  description: string;
   largeDescription?: string;
   link?: string;
   icon?: React.ReactNode;
-  labels?: string[]; 
+  labels?: string[];
 };
 
 type Props = {
@@ -48,19 +47,32 @@ const Timeline: React.FC<Props> = ({ events }) => {
                 )}
               </div>
               {event.tag && (
-                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg  px-4 py-1 bg-black/10">
+                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg  px-4 py-1 bg-black/10">
                   <h3>{event.tag}</h3>
                 </div>
               )}
             </div>
 
-            {/* Título y descripción */}
-            <div className="p-3 rounded-lg bg-[#00514B]">
-              <div className="text-sm font-normal text-gray-200 dark:text-gray-300">
+            {/* Título y descripción - Este DIV ahora es el clickable */}
+            <div
+              className={`p-3 rounded-lg bg-[#00514B] transition-colors ${event.largeDescription
+                  ? 'cursor-pointer hover:bg-[#03726a]' // Estilos de interacción si es expandible
+                  : ''
+                }`}
+              onClick={() => event.largeDescription && toggleDescription(index)}
+              aria-expanded={openIndex === index}
+              role="button"
+              tabIndex={event.largeDescription ? 0 : -1}
+            >
+              <div className="text-sm font-normal text-gray-200 dark:text-gray-300 flex justify-between items-center">
                 {event.link ? (
                   <a
                     href={event.link}
-                    className="font-semibold text-gray-600 dark:text-white hover:underline"
+                    // Usamos onClick para evitar que el evento se propague al div padre y cierre la descripción inmediatamente después de abrirla
+                    onClick={(e) => e.stopPropagation()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-gray-600 dark:text-white hover:underline pointer-events-auto"
                   >
                     {event.title}
                   </a>
@@ -69,26 +81,19 @@ const Timeline: React.FC<Props> = ({ events }) => {
                     {event.title}
                   </span>
                 )}
-              </div>
 
-              {/* Descripción corta */}
-              <div className="flex justify-between">
-                <p className="text-xs mt-1">{event.description}</p>
-
-                {/* Flecha toggle */}
+                {/* Flecha toggle - Ahora es solo un indicador visual, el padre maneja el clic */}
                 {event.largeDescription && (
-                  <button
-                    onClick={() => toggleDescription(index)}
-                    className="ml-2 text-gray-300 hover:text-white transition-transform cursor-pointer"
-                  >
+                  <span className="ml-2 text-gray-300 transition-transform flex-shrink-0">
                     {openIndex === index ? (
                       <ChevronUp size={16} />
                     ) : (
                       <ChevronDown size={16} />
                     )}
-                  </button>
+                  </span>
                 )}
               </div>
+
 
               {/* Descripción larga animada */}
               <AnimatePresence initial={false}>
