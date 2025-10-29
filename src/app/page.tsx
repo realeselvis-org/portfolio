@@ -176,7 +176,7 @@ export default function Home() {
       {/* Grid de cards */}
       <h2 className="text-xl font-bold mb-6">Proyects & Collabs</h2>
 
-      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 mt-12">
+      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-12">
         {cardsData.map((c) => (
           <ExperienceCard key={c.id} {...c} />
         ))}
