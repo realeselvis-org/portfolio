@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Alumni_Sans_Pinstripe } from "next/font/google";
 
 import "./globals.css";
 
@@ -15,6 +15,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const alumniSansPinstripe = Alumni_Sans_Pinstripe({
+  variable: "--font-alumni-sans-pinstripe",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -82,7 +88,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${alumniSansPinstripe.variable} antialiased`}
       >
         <ThemeManagerProvider>
           <Navbar2 />
