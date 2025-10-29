@@ -164,12 +164,12 @@ export default function Home() {
 
       {/* Timeline */}
       <section id="timeline" className="mt-20">
-        <h2 className="text-xl font-bold mb-6">Experiencia</h2>
+        <h2 className="text-2xl font-allerta mb-6">Experiencia</h2>
         <Timeline events={timelineEvents} />
       </section>
 
       {/* Grid de cards */}
-      <h2 className="text-xl font-bold mb-6">Proyects & Collabs</h2>
+      <h2 className="text-2xl font-allerta mb-6">Proyects & Collabs</h2>
 
       <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-12">
         {cardsData.map((c) => (

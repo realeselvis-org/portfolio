@@ -48,7 +48,7 @@ export default function ExperienceCard({
       {/* Sección 1: Título + acciones */}
       <div className="section1 flex items-center p-4 pb-8 bg-custom relative z-10 justify-between">
         <div className="flex gap-2  rounded">
-          <h2 className="font-normal text-base leading-none">{title}</h2>
+          <h2 className="font-allerta text-lg leading-none">{title}</h2>
         </div>
 
         {/* Botones de acción */}
@@ -131,7 +131,8 @@ export default function ExperienceCard({
               {labels.map((label, index) => (
                 <span
                   key={index}
-                  className="px-2 font-mono py-0.5 rounded-full bg-white text-[0.625rem] font-light shadow-sm border border-gray-300"
+                  className="bg-white/5 px-2 py-1 rounded-xl text-xs font-alumi"
+                  
                 >
                   {label}
                 </span>

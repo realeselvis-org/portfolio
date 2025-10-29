@@ -41,14 +41,14 @@ const Timeline: React.FC<Props> = ({ events }) => {
             <div className="">
               <div className="items-center justify-between mb-5 sm:flex">
                 {event.time && (
-                  <time className="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">
+                  <time className="mb-1 text-lg font-alumi text-gray-200 sm:order-last sm:mb-0">
                     {event.time}
                   </time>
                 )}
               </div>
               {event.tag && (
                 <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg  px-4 py-1 bg-black/10">
-                  <h3>{event.tag}</h3>
+                  <h3 className="font-allerta">{event.tag}</h3>
                 </div>
               )}
             </div>
@@ -72,7 +72,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
                     onClick={(e) => e.stopPropagation()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-gray-600 dark:text-white hover:underline pointer-events-auto"
+                    className="font-allerta text-lg text-white dark:text-white hover:underline pointer-events-auto"
                   >
                     {event.title}
                   </a>
@@ -99,7 +99,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
               <AnimatePresence initial={false}>
                 {openIndex === index && event.largeDescription && (
                   <HeightMotion key="largeDescription">
-                    <p className="text-xs text-gray-100">
+                    <p className="text-xs font-mono text-gray-100">
                       {event.largeDescription}
                     </p>
                   </HeightMotion>
@@ -113,7 +113,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
                 {event.labels.map((label, i) => (
                   <span
                     key={`${index}-label-${i}`}
-                    className="bg-white/5 px-2 py-1 rounded-2xl text-[10px] font-mono"
+                    className="bg-white/5 px-2 py-1 rounded-xl text-xs font-alumi"
                   >
                     {label}
                   </span>

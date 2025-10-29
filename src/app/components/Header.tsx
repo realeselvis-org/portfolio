@@ -44,10 +44,10 @@ export default function Header({
 
       {/* Section 2 - Texto y botones */}
       <div className="gap-6 md:gap-none grid content-center md:w-3/4">
-        <h1 className="font-mono text-3xl">{title}</h1>
-        <h2 className="font-mono text-base leading-none">
+        <h1 className="text-3xl font-allerta leading-none">
           {subtitle}
-        </h2>
+        </h1>
+        <h2 className="font-allerta text-2xl">{title}</h2>
         <p className="font-mono font-thin text-xs">{description}</p>
 
         {actions.length > 0 && (
@@ -92,7 +92,7 @@ export default function Header({
             {labels.map((label, i) => (
               <span
                 key={i}
-                className="bg-white/5 px-2 py-1 rounded-2xl text-[10px] font-mono"
+                className="bg-white/5 px-2 py-1 rounded-2xl font-alumi text-xs "
               >
                 {label}
               </span>
