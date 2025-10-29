@@ -1,4 +1,3 @@
-// src/components/ExperienceCard.tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -30,7 +29,7 @@ export default function ExperienceCard({
   actions = [],
   labels = [],
 }: Props) {
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [initialHeight, setInitialHeight] = useState<number | null>(null);
 
   const section2Ref = useRef<HTMLDivElement | null>(null);
@@ -90,56 +89,66 @@ export default function ExperienceCard({
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col grid gap-8 shadow-custom rounded-b-2xl">
-        {/* Sección 2: Imagen + descripción */}
+      <div className={`flex flex-1 h-full p-4 shadow-custom rounded-b-2xl ${isMobile ? "flex-row gap-4" : "flex-col"}`}>
+        {/* Sección 2: Imagen */}
         <div
           ref={section2Ref}
-          className={`section2 flex-1 mx-4 rounded transition-all duration-300  ${isMobile ? "flex items-center" : "grid"
+          className={`section2 flex-1 rounded transition-all duration-300  ${isMobile ? "flex items-center" : ""
             }`}
-          style={{
-            minHeight: initialHeight ? `${initialHeight}px` : undefined,
-          }}
         >
-          <div
-            className={`rounded box-border overflow-hidden flex-shrink-0 ${isMobile ? "max-w-1/2 " : ""
+          <img
+            src={isMobile ? imageMobile : imageDesktop}
+            alt={`${title} preview`}
+            className={`object-contain ${isMobile ? "w-full h-full" : "w-full h-auto"
               }`}
-          >
-            <img
-              src={isMobile ? imageMobile : imageDesktop}
-              alt={`${title} preview`}
-              className="w-full h-auto object-contain"
-            />
-          </div>
-
-          <div className={`rounded flex-1 ${isMobile ? "pl-4" : "pt-4"}`}>
-            <h3 className="font-mono font-light antialiased text-sm">{subtitle}</h3>
-            <p className="font-mono font-thin antialiased text-[10px]">{description}</p>
-          </div>
+          />
         </div>
 
-        {/* Sección 3: Labels + Toggle (monitor / smartphone) */}
-        <div className="section3 flex items-center justify-between rounded mt-auto m-4 ">
-          <div className="flex flex-wrap gap-1">
-            {labels.map((label, index) => (
-              <span
-                key={index}
-                className="px-2 font-mono py-0.5 rounded-full bg-white text-[0.625rem] font-light shadow-sm border border-gray-300"
-              >
-                {label}
-              </span>
-            ))}
+        {/* Sección 3: Descirpción, labels y toggle */}
+        <div
+          className={`rounded flex-1 flex flex-col ${isMobile ? "mx-0 justify-between" : "mx-0"
+            }`}
+        >
+
+          {/* Sección 3.1: Descirpción */}
+          <div
+            className={`flex flex-col ${isMobile ? "" : "justify-center flex-grow"
+              }`}
+          >
+            <h3 className="font-mono font-light antialiased text-sm">{subtitle}</h3>
+            <p className="font-mono font-thin antialiased text-xs">{description}</p>
           </div>
 
-          {/* Toggle personalizado */}
-          <div className="">
-            <Toggle
-              checked={isMobile}
-              onChange={(checked) => setIsMobile(checked)}
-              leftIcon={<Monitor />}
-              rightIcon={<Smartphone />}
-              size="md"
-              variant="glow"
-            />
+          {/* Sección 3.2.1: Labels + Toggle */}
+          <div
+            className={`flex justify-between ${isMobile
+                ? "flex-col min-h-1/3"
+                : "flex-row items-end mt-auto"
+              }`}
+          >
+            {/* Sección 3.2.1.1: Labels */}
+            <div className="flex flex-wrap gap-1">
+              {labels.map((label, index) => (
+                <span
+                  key={index}
+                  className="px-2 font-mono py-0.5 rounded-full bg-white text-[0.625rem] font-light shadow-sm border border-gray-300"
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+
+            {/* Sección 3.2.1.2: Toggle */}
+            <div className="flex justify-end">
+              <Toggle
+                checked={isMobile}
+                onChange={(checked) => setIsMobile(checked)}
+                leftIcon={<Monitor />}
+                rightIcon={<Smartphone />}
+                size="md"
+                variant="glow"
+              />
+            </div>
           </div>
         </div>
       </div>
