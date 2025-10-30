@@ -81,9 +81,10 @@ h1 {
   
   background: linear-gradient(
     180deg,
-    #d2fae3 0%,    
-    #00ffcc 30%,    
-    #003128 100%    /* ocupa del 40% al final */
+    #000000 0%,    
+    #050505 55%,    
+    /* ocupa del 40% al final */
+    #121212 100%   
   );
     background-size: 90% 80%;
     color: transparent; /* importante */
