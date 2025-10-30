@@ -1,28 +1,31 @@
 @import "tailwindcss";
-@import "@fontsource/allerta-stencil"; 
+@import "@fontsource/allerta-stencil";
 
 
 /* Variables base (dark-custom por defecto - toggle siempre ON) */
 :root {
-  --background: #122221; /* Color de fondo OSCURO por defecto */
-  --foreground: #e8fafa; /* Color de texto CLARO por defecto */
-  --shadow: 0 0px 18px -4px rgba(29,218,210,0.8); /* Sombra oscura */
-  --custom-bg: #122221;
+  --background: #122221;
+  /* Color de fondo OSCURO por defecto */
+  --foreground: #e8fafa; 
+  /* Color de texto CLARO por defecto */
+  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.8);
+  /* Sombra oscura */
+  --custom-bg: #122221;  
 }
 
 /* Tema dark (cuando SO está en oscuro) */
 html.dark {
   --background: #1C2A29;
   --foreground: #ededed;
-  --shadow: 0 0px 18px -4px rgba(29,218,210,0.7);
+  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.7);
   --custom-bg: #1C2A29;
 }
 
 /* Tema dark-custom (cuando SO está en claro pero usuario quiere oscuro) */
 html.dark-custom {
-  --background: #122221;
+  --background: #003128;
   --foreground: #e8fafa;
-  --shadow: 0 0px 18px -4px rgba(29,218,210,0.8);
+  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.8);
   --custom-bg: #122221;
 }
 
@@ -65,18 +68,75 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Aplicar Alumni Sans Pinstripe a todas las labels */
-label {
-  font-family: var(--font-alumni-sans-pinstripe), var(--font-sans), Arial, Helvetica, sans-serif;
-}
+/* Elementos personalizados */
+h1 {
+  font-family: "Allerta Stencil", sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  /*
+   text-shadow:
+    1px 1px 2px rgba(66, 213, 7, 0.1),
+    -1px -1px 2px rgba(103, 209, 4, 0.1);
+    */
+  
+  background: linear-gradient(
+    180deg,
+    #d2fae3 0%,    
+    #00ffcc 30%,    
+    #003128 100%    /* ocupa del 40% al final */
+  );
+    background-size: 90% 80%;
+    color: transparent; /* importante */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* compatibilidad Safari/Chrome */
+  }
+
+  h2 {
+  font-family: "Allerta Stencil", sans-serif;
+  font-size: 1.5rem;
+
+  text-transform: uppercase;
+    
+    /* 2. El paso CRUCIAL: Hacemos el texto transparente */
+    color: #003128; 
+    
+    /* 3. Aplicamos las sombras múltiples */
+    /* Sombra Clara: Simula la luz desde arriba-izquierda (relieve) */
+    text-shadow: 
+        0.5px 0.5px 0.5px #fff,  /* Sombra clara/blanca (simula la parte iluminada del hueco) */
+    
+    /* Sombra Oscura: Simula la sombra desde abajo-derecha (profundidad) */
+        -0.5px -0.5px 1px #363636; /* Sombra oscura/gris (simula la sombra de la parte hundida) */
+    
+    /* 4. Opcional: Un pequeño desenfoque para suavizar el efecto */
+    /* text-shadow: 1px 1px 1px #fff, -1px -1px 1px #888, 0 0 5px rgba(0,0,0,0.2); */
+  }
+
 
 /* Utilidad para fuente Allerta Stencil (Tailwind v4) */
 @layer utilities {
   .font-allerta {
     font-family: "Allerta Stencil", sans-serif;
   }
+
   .font-alumi {
     font-family: var(--font-alumni-sans-pinstripe), var(--font-sans), Arial, Helvetica, sans-serif;
+  }
+}
+
+/* Componente: etiqueta adaptable a temas */
+@layer components {
+  .custom-label {
+    @apply px-4 py-1 rounded-2xl font-thin font-mono text-[10px];
+    /* Fondo semitransparente derivado del color de texto del tema */
+    background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+    color: var(--foreground);
+  }
+
+  .custom-button {
+    @apply bg-[#00514B] text-[#1Ddad2]  px-2 py-1 rounded-sm flex items-center gap-2 hover:bg-[#00c0c0] hover:[text-shadow:0_0_7px_rgba(29,218,210,1)] hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)] transition-all duration-300 ease-in-out text-sm cursor-pointer active:scale-95 ;
+
   }
 }
 

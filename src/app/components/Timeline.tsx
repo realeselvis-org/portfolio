@@ -77,7 +77,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
                     {event.title}
                   </a>
                 ) : (
-                  <span className="font-semibold text-gray-600 dark:text-white">
+                  <span className="font-allerta text-lg text-white dark:text-white pointer-events-auto">
                     {event.title}
                   </span>
                 )}
@@ -113,7 +113,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
                 {event.labels.map((label, i) => (
                   <span
                     key={`${index}-label-${i}`}
-                    className="bg-white/5 px-2 py-1 rounded-xl text-xs font-alumi"
+                    className="custom-label"
                   >
                     {label}
                   </span>

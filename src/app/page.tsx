@@ -20,15 +20,15 @@ export default function Home() {
       description: "Panel administrativo y gestión interna de usuarios para una plataforma de cursos médicos. Stack: Next.js, React Router, TailwindCSS, Apollo Client, GraphQL; despliegue con Docker y control de código con GitHub.",
       actions: [
         {
-          icon: <Github className="w-6 h-6" />,
+          icon: <Github className="w-4 h-4" />,
           href: "https://github.com",
         },
         {
-          icon: <Github className="w-6 h-6" />,
+          icon: <Github className="w-4 h-4" />,
           href: "https://github.com",
         },
         {
-          icon: <Star className="w-6 h-6" />,
+          icon: <Star className="w-4 h-4" />,
           onClick: () => alert("⭐ Favorito!"),
         },
       ],
@@ -45,7 +45,7 @@ export default function Home() {
       description: "Migración a una estructura modular de bloques reutilizables con ACF en WordPress. Tecnologías: PHP, JavaScript, HTML, TailwindCSS; gestión de MySQL via phpMyAdmin, metodología SCRUM y control de versiones con Git.",
       actions: [
         {
-          icon: <Github className="w-6 h-6" />,
+          icon: <Github className="w-4 h-4" />,
           href: "https://github.com",
         },
       ],
@@ -83,7 +83,7 @@ export default function Home() {
       title: "Tecnología en Desarrollo de Software",
       largeDescription: "Desarrollo de proyecto propio como parte del proceso formativo. Elaboración de la documentación técnica y adopción de buenas prácticas de desarrollo, con el propósito de comprender de forma integral el ciclo de vida del software.",
       icon: <GraduationCap className="w-5 h-5" />,
-      link: "/proyecto",
+      // link: "/proyecto",
       // labels: ["Estudio "],
     },
     {
@@ -92,7 +92,7 @@ export default function Home() {
       title: "Soporte Técnico · Privilege Team",
       largeDescription: "Constructor Web / Plataforma de Ecommerce. Soporte técnico y asesoría en la creación y personalización de sitios, funnels y tiendas online. Acompañamiento en integraciones externas, APIs, automatizaciones con IA y consultas SQL.",
       icon: <ArrowUpNarrowWide className="w-5 h-5" />,
-      link: "/proyecto",
+      //link: "/proyecto",
       labels: ["SEO", "DNS", "HTML", "JavaScript"],
 
     },
@@ -102,7 +102,7 @@ export default function Home() {
       title: "Desarrollador Junior · SculApp",
       largeDescription: "Desarrollo de la plataforma administrativa. Freelance para apoyar el desarrollo de la plataforma administrativa de la Clínica Panamericana, un nuevo cliente de la empresa.",
       icon: <SquareCode className="w-5 h-5" />,
-      link: "#",
+      // link: "#",
       labels: ["Freelance", "React", "Docker", "Tailwind"],
     },
     {
@@ -111,7 +111,7 @@ export default function Home() {
       title: "Analista TI · Prácticas",
       largeDescription: "Soporte de segundo nivel, desarrollo e integración web. Apoyé al equipo de desarrollo en la implementación y mejora de sitios web, asegurando su correcta integración con sistemas internos. Brindé soporte técnico de segundo nivel, resolviendo incidencias y optimizando procesos. También colaboré en el despliegue de aplicaciones móviles conectadas con plataformas web y en la coordinación del trabajo bajo metodología ágil.",
       icon: <SquareCode className="w-5 h-5" />,
-      link: "#",
+      //link: "#",
       labels: ["Wordpress", "HTML", "Tailwind", "PHP", "SQL"],
     },
     {
@@ -120,7 +120,7 @@ export default function Home() {
       title: "Carrera Técnica en Desarrollo de Software",
       largeDescription: "Desarrollo de proyecto colaborativo institucional. Formación técnica en desarrollo de software orientada a proyectos reales. Como trabajo final, participé en la creación de un sistema de gestión documental para el SENA, fortaleciendo mis bases en trabajo en equipo y desarrollo estructurado.",
       icon: <GraduationCap className="w-5 h-5" />,
-      link: "#",
+      // link: "#",
       labels: ["Boostrap", "Python", "HTML", "JavaScript", "CSS", "PHP", "SQL"],
     },
   ];
@@ -139,11 +139,11 @@ export default function Home() {
           image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760725827/perfil2_tvultr.jpg"
           actions={[
             {
-              icon: <Mail className="w-5 h-5" />,
+              icon: <Mail className="w-4 h-4" />,
               onClick: () => alert("realeselvis@gmail.com")
             },
             {
-              icon: <Github className="w-5 h-5" />,
+              icon: <Github className="w-4 h-4" />,
               href: "https://github.com/realeselvis",
               target: "_blank",
             },

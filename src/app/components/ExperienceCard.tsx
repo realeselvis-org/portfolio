@@ -60,13 +60,7 @@ export default function ExperienceCard({
                 href={action.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full p-1.5 h-8 w-8 
-                           bg-[#00514B] text-[#1Ddad2] 
-                           cursor-pointer flex items-center justify-center
-                           transition-all duration-300 ease-in-out
-                           hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)]
-                           hover:[text-shadow:0_0_7px_rgba(29,218,210,1)]
-                           active:scale-95"
+                className="custom-button"
               >
                 {action.icon}
               </a>
@@ -74,13 +68,7 @@ export default function ExperienceCard({
               <button
                 key={i}
                 onClick={action.onClick}
-                className="rounded-full p-1.5 h-8 w-8
-                           bg-[#00514B] text-[#1Ddad2]
-                           cursor-pointer flex items-center justify-center
-                           transition-all duration-300 ease-in-out
-                           hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)]
-                           hover:[text-shadow:0_0_7px_rgba(29,218,210,1)]
-                           active:scale-95"
+                className="custom-button"
               >
                 {action.icon}
               </button>
@@ -131,8 +119,7 @@ export default function ExperienceCard({
               {labels.map((label, index) => (
                 <span
                   key={index}
-                  className="bg-white/5 px-2 py-1 rounded-xl text-xs font-alumi"
-                  
+                  className="custom-label"
                 >
                   {label}
                 </span>
