@@ -1,32 +1,48 @@
 @import "tailwindcss";
 @import "@fontsource/allerta-stencil";
 
-
-/* Variables base (dark-custom por defecto - toggle siempre ON) */
-:root {
-  --background: #122221;
-  /* Color de fondo OSCURO por defecto */
-  --foreground: #e8fafa; 
-  /* Color de texto CLARO por defecto */
-  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.8);
-  /* Sombra oscura */
-  --custom-bg: #122221;  
-}
-
-/* Tema dark (cuando SO está en oscuro) */
-html.dark {
-  --background: #1C2A29;
-  --foreground: #ededed;
+/* Root, tema dark y dark custom (para mostrar cuando SO está en ligth) */
+:root,
+html.dark,
+html.dark-custom {
+  --background: #131c1c;
+  --foreground: #e4ebeb;
   --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.7);
   --custom-bg: #1C2A29;
+  /* Colores para degradado de h1 y h2 */  
+  --h-grad-1: #fcffff;
+  --h-grad-2: #fcffff;
+  --h-grad-3: #181818;
 }
-
-/* Tema dark-custom (cuando SO está en claro pero usuario quiere oscuro) */
+/*
+:root,
+html.dark,
 html.dark-custom {
-  --background: #003128;
-  --foreground: #e8fafa;
-  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.8);
-  --custom-bg: #122221;
+  --background: #131c1c;
+  --foreground: #7bc0be;
+  --shadow: 0 0px 18px -4px rgba(29, 218, 210, 0.7);
+  --custom-bg: #1C2A29;
+  /* Colores para degradado de h1 y h2  
+  --h-grad-1: #050808;
+  --h-grad-2: #0d1414;
+  --h-grad-3: #0f1717;
+
+    --h-grad-1: #749b9b;
+  --h-grad-2: #495454;
+  --h-grad-3: #060606;
+}
+*/ 
+/* Tema ligth */
+html.light {
+  --background: #d6eceb;
+  --foreground: #171717;
+  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.473);
+  --custom-bg: #d6eceb;
+
+  /* Colores para degradado de h1 y h2 */  
+  --h-grad-1: #000000;
+  --h-grad-2: #050505;
+  --h-grad-3: #121212;
 }
 
 /* Temas personalizados */
@@ -35,6 +51,10 @@ html.dark-custom {
   --foreground: #111111;
   --shadow: 0 0px 18px -4px rgba(255, 136, 0, 0.95);
   --custom-bg: #fffb0f;
+  /* Colores para degradado de h1 y h2 */  
+  --h-grad-1: #0b3030;
+  --h-grad-2: #0f4a48;
+  --h-grad-3: #1c6b66;
 }
 
 .theme-dev-dark {
@@ -42,6 +62,10 @@ html.dark-custom {
   --foreground: #f5f5f5;
   --shadow: -3px 7px 18px -3px rgba(0, 102, 255, 0.95);
   --custom-bg: #141414;
+  /* Colores para degradado de h1 y h2 */  
+  --h-grad-1: #0b1220;
+  --h-grad-2: #07203a;
+  --h-grad-3: #0b4a9e;
 }
 
 /* Tailwind v4: mapear variables a tokens */
@@ -69,49 +93,21 @@ body {
 }
 
 /* Elementos personalizados */
-h1 {
+h1, h2 {
   font-family: "Allerta Stencil", sans-serif;
-  font-size: 3rem;
   letter-spacing: 0.1em;
-  /*
-   text-shadow:
-    1px 1px 2px rgba(66, 213, 7, 0.1),
-    -1px -1px 2px rgba(103, 209, 4, 0.1);
-    */
-  
+
   background: linear-gradient(
     180deg,
-    #000000 0%,    
-    #050505 55%,    
-    /* ocupa del 40% al final */
-    #121212 100%   
+    var(--h-grad-1) 0%,
+    var(--h-grad-2) 55%,
+    var(--h-grad-3) 100%
   );
-    background-size: 90% 80%;
-    color: transparent; /* importante */
+    background-size: 100% 110%;
+    color: transparent; 
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent; /* compatibilidad Safari/Chrome */
-  }
-
-  h2 {
-  font-family: "Allerta Stencil", sans-serif;
-  font-size: 1.5rem;
-
-  text-transform: uppercase;
-    
-    /* 2. El paso CRUCIAL: Hacemos el texto transparente */
-    color: #003128; 
-    
-    /* 3. Aplicamos las sombras múltiples */
-    /* Sombra Clara: Simula la luz desde arriba-izquierda (relieve) */
-    text-shadow: 
-        0.5px 0.5px 0.5px #fff,  /* Sombra clara/blanca (simula la parte iluminada del hueco) */
-    
-    /* Sombra Oscura: Simula la sombra desde abajo-derecha (profundidad) */
-        -0.5px -0.5px 1px #363636; /* Sombra oscura/gris (simula la sombra de la parte hundida) */
-    
-    /* 4. Opcional: Un pequeño desenfoque para suavizar el efecto */
-    /* text-shadow: 1px 1px 1px #fff, -1px -1px 1px #888, 0 0 5px rgba(0,0,0,0.2); */
+    -webkit-text-fill-color: transparent;
   }
 
 
@@ -142,9 +138,3 @@ h1 {
 }
 
 /* Tema light (solo cuando toggle está OFF) */
-html.light {
-  --background: #d6eceb;
-  --foreground: #171717;
-  --shadow: 0 0px 18px -4px rgba(0, 0, 0, 0.473);
-  --custom-bg: #d6eceb;
-}

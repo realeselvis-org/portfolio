@@ -43,12 +43,12 @@ export default function Header({
       </div>
 
       {/* Section 2 - Texto y botones */}
-      <div className="gap-6 md:gap-none grid content-center md:w-3/4">
-        <h1 >
+      <div className="gap-4 md:gap-none grid content-center md:w-3/4">
+        <h1 className="text-3xl">
           {subtitle}
         </h1>
-        <h2 className="">{title}</h2>
-        <p className="font-alumi tracking-[.2em] text-base">{description}</p>
+        <h2 className="text-xl sm:text-2xl">{title}</h2>
+        <p className="font-alumi font-medium tracking-[.2em] text-base">{description}</p>
 
         {actions.length > 0 && (
           <div className="flex flex-wrap gap-2 justify-center md:justify-start">
