@@ -30,7 +30,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
       {events.map((event, index) => (
         <li key={index} className="mb-10 ms-10">
           {/* Icono */}
-          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 bg-[#00514B] text-[#1Ddad2] ring-8 ring-[#122221] p-2">
+          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 bg-[#00514B] text-[#1Ddad2] ring-8 ring-[var(--background)] p-2">
             {event.icon}
           </span>
 
@@ -39,21 +39,21 @@ const Timeline: React.FC<Props> = ({ events }) => {
 
             {/* Fecha y tag */}
             <div className="">
-              <div className="items-center justify-between mb-5 sm:flex">
+              <div className="items-center justify-between mb-3 mt-[-5px] sm:flex">
                 {event.time && (
-                  <time className="mb-1 text-lg font-alumi text-gray-200 sm:order-last sm:mb-0">
+                  <time className="font-alumi font-light text-sm mb-0 tracking-[.075em]">
                     {event.time}
                   </time>
                 )}
               </div>
               {event.tag && (
-                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg  px-4 py-1 bg-black/10">
-                  <h3 className="font-allerta">{event.tag}</h3>
+                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg px-3 py-1 bg-white/90">
+                  <p className="font-allerta text-black">{event.tag}</p>
                 </div>
               )}
             </div>
 
-            {/* Título y descripción - Este DIV ahora es el clickable */}
+            {/* Título y descripción - DIV  clickable */}
             <div
               className={`p-3 rounded-lg bg-[#00514B] transition-colors ${event.largeDescription
                   ? 'cursor-pointer hover:bg-[#03726a]' // Estilos de interacción si es expandible
@@ -99,7 +99,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
               <AnimatePresence initial={false}>
                 {openIndex === index && event.largeDescription && (
                   <HeightMotion key="largeDescription">
-                    <p className="text-xs font-mono text-gray-100">
+                    <p className="custom-text font-jetmono">
                       {event.largeDescription}
                     </p>
                   </HeightMotion>
@@ -109,11 +109,11 @@ const Timeline: React.FC<Props> = ({ events }) => {
 
             {/* Labels */}
             {event.labels && event.labels.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-5">
+              <div className="flex flex-wrap gap-1 mt-4">
                 {event.labels.map((label, i) => (
                   <span
                     key={`${index}-label-${i}`}
-                    className="custom-label"
+                    className="custom-label font-alumi"
                   >
                     {label}
                   </span>
