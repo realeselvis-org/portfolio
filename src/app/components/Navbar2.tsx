@@ -29,7 +29,7 @@ export default function Navbar2() {
           {/* Botón menú móvil */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="absolute inset-y-0 left-0 flex items-center sm:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
+            className="absolute inset-y-0 left-0 flex items-center sm:hidden justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
           >
             {menuOpen ? (
               <X className="w-7 h-7 text-secondary opacity-80 transition-all duration-200" />

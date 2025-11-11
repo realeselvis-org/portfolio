@@ -43,7 +43,7 @@ export default function Toggle({
       iconSize: "w-1 h-1",
     },
     md: {
-      container: "w-16 h-8 p-1.5",
+      container: "w-16 h-8 p-1",
       thumb: "w-6 h-6",
       iconSize: "w-2 h-2",
     },
@@ -57,11 +57,11 @@ export default function Toggle({
 
   const variantMap = {
     glow: {
-      container: "bg-[#0f1720] rounded-full",
+      container: "bg-byw rounded-full border-[0.5px] border-lightdark/30",
       thumb:
-        "bg-[rgba(6,182,212,0.14)] shadow-[0_0_7px_1px_rgba(29,218,210,0.9)]",
+        "bg-secondary shadow-[0_0_7px_1px_rgba(29,218,210,0.2)]",
       iconActive: "text-cyan-400 scale-110",
-      iconInactive: "text-cyan-700 opacity-50",
+      iconInactive: "text-cyan-700 opacity-85",
     },
     flat: {
       container: "bg-gray-700",
@@ -160,7 +160,7 @@ export default function Toggle({
               left: isOn ? `${onLeft}px` : `${offLeft}px`,
               transform: isOn
                 ? "translateY(-50%) scale(1.1)"
-                : "translateY(-50%) scale(1)",
+                : "translateY(-50%) scale(1.1)",
             }}
             className={`absolute top-1/2 rounded-full ${v.thumb} transition-all duration-300 active:scale-x-135 flex items-center justify-center`}
           >

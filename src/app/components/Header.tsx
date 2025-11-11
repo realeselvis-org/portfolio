@@ -92,7 +92,7 @@ export default function Header({
             {labels.map((label, i) => (
               <span
                 key={i}
-                className="custom-label font-alumi bg-lightdark/75 text-darklight"
+                className="custom-label font-alumi"
               >
                 {label}
               </span>

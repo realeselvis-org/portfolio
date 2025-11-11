@@ -14,6 +14,7 @@
   --color-bgclick: var(--bgclick);
   --color-byw: var(--byw);
 
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -100,15 +101,6 @@ html.light {
   --h-grad-3: #0b4a9e;
 }
 
-/* Utilidades personalizadas */
-.shadow-custom {
-  box-shadow: var(--shadow);
-}
-
-.bg-custom {
-  background-color: var(--background);
-}
-
 /* Base */
 body {
   background: var(--background);
@@ -148,13 +140,21 @@ h1, h2, h3 {
   .font-jetmono {
     font-family: "JetBrains Mono", monospace;
   }
+
+  .shadow-custom {
+    box-shadow: var(--shadow) !important;
+  }
+
+  .bg-custom {
+    background-color: var(--background);
+  }
   
 }
 
 /* Componente: etiqueta adaptable a temas */
 @layer components {
   .custom-label {
-    @apply px-3 py-0 rounded-2xl font-medium  h-fit w-fit text-sm mb-0 tracking-[.075em];
+    @apply bg-lightdark/75 text-darklight px-3 py-0 rounded-2xl font-medium  h-fit w-fit text-sm mb-0 tracking-[.075em];
   }
 
   .custom-text {
