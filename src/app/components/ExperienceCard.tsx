@@ -119,7 +119,7 @@ export default function ExperienceCard({
               {labels.map((label, index) => (
                 <span
                   key={index}
-                  className="custom-label"
+                  className="custom-label font-alumi"
                 >
                   {label}
                 </span>

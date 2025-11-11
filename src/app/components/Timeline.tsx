@@ -26,11 +26,11 @@ const Timeline: React.FC<Props> = ({ events }) => {
   };
 
   return (
-    <ol className="relative border-s-4 border-[#00514B]">
+    <ol className="relative border-s-4 border-primary">
       {events.map((event, index) => (
         <li key={index} className="mb-10 ms-10">
           {/* Icono */}
-          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 bg-[#00514B] text-[#1Ddad2] ring-8 ring-[var(--background)] p-2">
+          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 bg-primary text-darklight ring-8 ring-[var(--background)] p-2">
             {event.icon}
           </span>
 
@@ -41,22 +41,22 @@ const Timeline: React.FC<Props> = ({ events }) => {
             <div className="">
               <div className="items-center justify-between mb-3 mt-[-5px] sm:flex">
                 {event.time && (
-                  <time className="font-alumi font-semibold text-base mb-0 tracking-[.075em]">
+                  <time className="font-alumi font-normal text-sm md:text-base mb-0 tracking-[.075em]">
                     {event.time}
                   </time>
                 )}
               </div>
               {event.tag && (
-                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg px-3 py-1 bg-primary">
-                  <p className="font-allerta">{event.tag}</p>
+                <div className="absolute top-0 right-0 p-1 text-xs md:text-sm rounded-tr-lg rounded-bl-lg px-3 py-1 bg-primary">
+                  <p className="font-allerta text-darklight">{event.tag}</p>
                 </div>
               )}
             </div>
 
             {/* Título y descripción - DIV  clickable */}
             <div
-              className={`p-3 rounded-lg bg-[#00514B] transition-colors ${event.largeDescription
-                  ? 'cursor-pointer hover:bg-[#03726a]' // Estilos de interacción si es expandible
+              className={`p-3 rounded-lg bg-bgclick transition-colors ${event.largeDescription
+                  ? 'cursor-pointer hover:bg-bgclick/50' // Estilos de interacción si es expandible
                   : ''
                 }`}
               onClick={() => event.largeDescription && toggleDescription(index)}
@@ -84,7 +84,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
 
                 {/* Flecha toggle - Ahora es solo un indicador visual, el padre maneja el clic */}
                 {event.largeDescription && (
-                  <span className="ml-2 text-gray-300 transition-transform flex-shrink-0">
+                  <span className="ml-2 text-lightdark transition-transform flex-shrink-0">
                     {openIndex === index ? (
                       <ChevronUp size={16} />
                     ) : (
