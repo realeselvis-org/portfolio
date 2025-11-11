@@ -109,22 +109,7 @@ body {
 }
 
 /* Elementos personalizados */
-h1, h2, h3 {
-  font-family: "Allerta Stencil", sans-serif;
-  letter-spacing: 0.1em;
 
-  background: linear-gradient(
-    180deg,
-    var(--h-grad-1) 0%,
-    var(--h-grad-2) 55%,
-    var(--h-grad-3) 100%
-  );
-    background-size: 100% 110%;
-    color: transparent; 
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 
 
 /* Utilidad para fuente (Tailwind v4) */
@@ -147,6 +132,22 @@ h1, h2, h3 {
 
   .bg-custom {
     background-color: var(--background);
+  }
+
+  .heading-gradient {
+    font-family: "Allerta Stencil", sans-serif;
+    letter-spacing: 0.1em;
+    background: linear-gradient(
+      180deg,
+      var(--h-grad-1) 0%,
+      var(--h-grad-2) 55%,
+      var(--h-grad-3) 100%
+    );
+    background-size: 100% 110%;
+    color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
 }
