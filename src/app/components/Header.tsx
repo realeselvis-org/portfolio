@@ -54,7 +54,7 @@ export default function Header({
           <div className="flex flex-wrap gap-2 justify-center md:justify-start">
             {actions.map((action, i) => {
               const buttonClasses =
-                "custom-button";
+                "custom-button bg-primary text-secondary";
 
               // Si tiene href → Link
               if (action.href) {
@@ -92,7 +92,7 @@ export default function Header({
             {labels.map((label, i) => (
               <span
                 key={i}
-                className="custom-label font-alumi"
+                className="custom-label font-alumi bg-lightdark/75 text-darklight"
               >
                 {label}
               </span>

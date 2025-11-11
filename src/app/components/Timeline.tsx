@@ -41,14 +41,14 @@ const Timeline: React.FC<Props> = ({ events }) => {
             <div className="">
               <div className="items-center justify-between mb-3 mt-[-5px] sm:flex">
                 {event.time && (
-                  <time className="font-alumi font-light text-sm mb-0 tracking-[.075em]">
+                  <time className="font-alumi font-semibold text-base mb-0 tracking-[.075em]">
                     {event.time}
                   </time>
                 )}
               </div>
               {event.tag && (
-                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg px-3 py-1 bg-white/90">
-                  <p className="font-allerta text-black">{event.tag}</p>
+                <div className="absolute top-0 right-0 p-1 text-sm rounded-tr-lg rounded-bl-lg px-3 py-1 bg-primary">
+                  <p className="font-allerta">{event.tag}</p>
                 </div>
               )}
             </div>
@@ -64,7 +64,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
               role="button"
               tabIndex={event.largeDescription ? 0 : -1}
             >
-              <div className="text-sm font-normal text-gray-200 dark:text-gray-300 flex justify-between items-center">
+              <div className="text-sm font-normal flex justify-between items-center">
                 {event.link ? (
                   <a
                     href={event.link}
@@ -72,12 +72,12 @@ const Timeline: React.FC<Props> = ({ events }) => {
                     onClick={(e) => e.stopPropagation()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-allerta text-lg text-white dark:text-white hover:underline pointer-events-auto"
+                    className="font-allerta text-lg hover:underline pointer-events-auto"
                   >
                     {event.title}
                   </a>
                 ) : (
-                  <span className="font-allerta text-lg text-white dark:text-white pointer-events-auto">
+                  <span className="font-allerta text-lg pointer-events-auto">
                     {event.title}
                   </span>
                 )}

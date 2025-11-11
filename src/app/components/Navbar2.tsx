@@ -32,9 +32,9 @@ export default function Navbar2() {
             className="absolute inset-y-0 left-0 flex items-center sm:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
           >
             {menuOpen ? (
-              <X className="w-5 h-5 text-cyan-400 opacity-80 transition-all duration-200" />
+              <X className="w-7 h-7 text-secondary opacity-80 transition-all duration-200" />
             ) : (
-              <Menu className="w-5 h-5 text-cyan-400 opacity-80 transition-all duration-200" />
+              <Menu className="w-7 h-7 text-secondary opacity-80 transition-all duration-200" />
             )}
           </button>
 
@@ -42,9 +42,9 @@ export default function Navbar2() {
           <div className="hidden sm:flex items-center sm:items-stretch sm:justify-start">
             <button
               onClick={() => window.open("https://drive.google.com/file/d/1ftNlP3Mlz7I_zjfBK5D_vUWtnDGqFpUR/view", "_blank")}
-              className="flex shrink-0 items-center p-2 rounded-md bg-[#00514B] hover:bg-gray-700 transition-colors cursor-pointer"
+              className="flex shrink-0 items-center p-2 rounded-md bg-primary transition-colors cursor-pointer"
             >
-              <FileUser className="h-6 w-6 text-cyan-400" />
+              <FileUser className="h-6 w-6 text-secondary" />
             </button>
           </div>
 
@@ -57,8 +57,8 @@ export default function Navbar2() {
                 aria-current={item.current ? "page" : undefined}
                 className={classNames(
                   item.current
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    ? "bg-primary text-darklight font-allerta text-lg"
+                    : " hover:bg-secondary hover:text-darklight font-allerta text-lg",
                   "rounded-md px-3 py-2 text-sm font-medium leading-none"
                 )}
               >
