@@ -43,7 +43,7 @@ export default function Toggle({
       iconSize: "w-1 h-1",
     },
     md: {
-      container: "w-16 h-8 p-1",
+      container: "w-14 h-8 p-1",
       thumb: "w-6 h-6",
       iconSize: "w-2 h-2",
     },

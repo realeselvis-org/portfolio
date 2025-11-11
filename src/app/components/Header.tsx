@@ -44,7 +44,7 @@ export default function Header({
 
       {/* Section 2 - Texto y botones */}
       <div className="gap-4 md:gap-none grid justify-between md:w-3/4">
-        <h1 className="text-3xl">
+        <h1 className="text-3xl heading-gradient">
           {subtitle}
         </h1>
         <h2 className="text-xl sm:text-2xl">{title}</h2>
