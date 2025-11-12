@@ -27,27 +27,35 @@ export default function Header({
   labels = [],
 }: Props) {
   return (
-    <div className="gap-12 md:flex h-full items-stretch justify-between">
-      {/* Section 1 - Imagen */}
-      <div className="flex justify-center">
+    <div className="flex flex-col md:flex-row md:gap-12 h-full md:items-stretch md:justify-between">
+      {/* MÓVIL: Imagen + Títulos en la misma fila */}
+      <div className="flex gap-4 items-center mb-6 md:mb-0 md:block">
         {image && (
           <Image
             src={image}
             alt={title}
             width={320}
             height={255}
-            sizes="(max-width: 768px) 100vw, 25vw"
-            className="rounded-lg object-contain pb-12 md:pb-0"
+            sizes="(max-width: 768px) 40vw, 25vw"
+            className="rounded-lg object-contain w-32 h-auto md:w-80"
           />
         )}
+        
+        {/* Títulos - visible solo en móvil */}
+        <div className="flex flex-col gap-2 md:hidden">
+          <h1 className="text-2xl heading-gradient">{subtitle}</h1>
+          <h2 className="text-lg heading-gradient">{title}</h2>
+        </div>
       </div>
 
-      {/* Section 2 - Texto y botones */}
-      <div className="gap-4 md:gap-none grid justify-between md:w-3/4">
-        <h1 className="text-3xl heading-gradient">
-          {subtitle}
-        </h1>
-        <h2 className="text-xl sm:text-2xl">{title}</h2>
+      {/* Contenido principal */}
+      <div className="flex flex-col gap-4 md:gap-6 md:justify-between md:w-3/4">
+        {/* Títulos - visible solo en desktop */}
+        <div className="hidden md:block space-y-2">
+          <h1 className="text-3xl heading-gradient">{subtitle}</h1>
+          <h2 className="text-xl sm:text-2xl heading-gradient">{title}</h2>
+        </div>
+
         <p className="custom-text font-jetmono">{description}</p>
 
         {actions.length > 0 && (
@@ -55,7 +63,7 @@ export default function Header({
             {actions.map((action, i) => {
               const buttonClasses =
                 "custom-button bg-primary text-secondary";
-
+              
               // Si tiene href → Link
               if (action.href) {
                 return (
