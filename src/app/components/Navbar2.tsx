@@ -32,9 +32,9 @@ export default function Navbar2() {
             className="absolute inset-y-0 left-0 flex items-center sm:hidden justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
           >
             {menuOpen ? (
-              <X className="w-7 h-7 text-secondary opacity-80 transition-all duration-200" />
+              <X className="w-7 h-7 text-primary opacity-80 transition-all duration-200" />
             ) : (
-              <Menu className="w-7 h-7 text-secondary opacity-80 transition-all duration-200" />
+              <Menu className="w-7 h-7 text-primary opacity-80 transition-all duration-200" />
             )}
           </button>
 
@@ -141,8 +141,8 @@ export default function Navbar2() {
               href={item.href}
               className={classNames(
                 item.current
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  ? "bg-secondary text-primary font-allerta"
+                  : "text-lightdark hover:bg-gray-700 hover:text-primary font-allerta",
                 "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
