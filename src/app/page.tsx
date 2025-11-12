@@ -163,15 +163,15 @@ export default function Home() {
 
 
       {/* Timeline */}
-      <section id="timeline" className="mt-20">
-        <h2 className="text-2xl font-allerta mb-6">Experiencia</h2>
+      <section id="timeline" className="mt-15 sm:mt-25">
+        <h2 className="text-2xl font-allerta mb-10 sm:mb-15">Experiencia</h2>
         <Timeline events={timelineEvents} />
       </section>
 
       {/* Grid de cards */}
-      <h2 className="text-2xl font-allerta mb-6">Proyects & Collabs</h2>
+      <h2 className="text-2xl font-allerta pt-15 sm:pt-25">Proyects & Collabs</h2>
 
-      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-12">
+      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-5 sm:mt-15">
         {cardsData.map((c) => (
           <ExperienceCard key={c.id} {...c} />
         ))}

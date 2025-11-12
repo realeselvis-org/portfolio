@@ -29,21 +29,23 @@ export default function Header({
   return (
     <div className="flex flex-col md:flex-row md:gap-12 h-full md:items-stretch md:justify-between">
       {/* MÓVIL: Imagen + Títulos en la misma fila */}
-      <div className="flex gap-4 items-center mb-6 md:mb-0 md:block">
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={320}
-            height={255}
-            sizes="(max-width: 768px) 40vw, 25vw"
-            className="rounded-lg object-contain w-32 h-auto md:w-80"
-          />
-        )}
+      <div className="flex mb-6 md:mb-0 md:block">
+        <div>
+          {image && (
+            <Image
+              src={image}
+              alt={title}
+              width={320}
+              height={255}
+              sizes="(max-width: 768px) 40vw, 25vw"
+              className="rounded-lg object-contain hidden md:block w-32 h-auto md:w-80"
+            />
+          )}
+        </div>
         
         {/* Títulos - visible solo en móvil */}
-        <div className="flex flex-col gap-2 md:hidden">
-          <h1 className="text-2xl heading-gradient">{subtitle}</h1>
+        <div className="flex gap-4 flex-col  justify-evenly md:hidden">
+          <h1 className="text-3xl heading-gradient">{subtitle}</h1>
           <h2 className="text-lg heading-gradient">{title}</h2>
         </div>
       </div>
@@ -56,7 +58,21 @@ export default function Header({
           <h2 className="text-xl sm:text-2xl heading-gradient">{title}</h2>
         </div>
 
-        <p className="custom-text font-jetmono">{description}</p>
+         {/* Imagen + Párrafo para móvil */}
+        <div className="flex gap-4 items-stretch">
+          {image && (
+            <div className="relative w-1/3 md:hidden">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 33vw"
+                className="rounded-lg object-cover"
+              />
+            </div>
+          )}
+          <p className="custom-text font-jetmono flex-1">{description}</p>
+        </div>
 
         {actions.length > 0 && (
           <div className="flex flex-wrap gap-2 justify-center md:justify-start">
