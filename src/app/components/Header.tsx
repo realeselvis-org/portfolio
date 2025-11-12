@@ -47,7 +47,7 @@ export default function Header({
         <h1 className="text-3xl heading-gradient">
           {subtitle}
         </h1>
-        <h2 className="text-xl sm:text-2xl">{title}</h2>
+        <h2 className="text-xl sm:text-2xl heading-gradient">{title}</h2>
         <p className="custom-text font-jetmono">{description}</p>
 
         {actions.length > 0 && (

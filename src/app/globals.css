@@ -165,7 +165,7 @@ body {
   }
 
   .custom-button {
-    @apply h-6 w-auto text-[#1Ddad2]  px-2 py-1 rounded-sm flex items-center hover:bg-[#00c0c0] hover:[text-shadow:0_0_7px_rgba(29,218,210,1)] hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)] transition-all duration-300 ease-in-out text-sm cursor-pointer active:scale-95 ;
+    @apply h-6 w-auto bg-primary text-secondary  px-2 py-1 rounded-sm flex items-center hover:bg-[#00c0c0] hover:[text-shadow:0_0_7px_rgba(29,218,210,1)] hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)] transition-all duration-300 ease-in-out text-sm cursor-pointer active:scale-95 ;
 
   }
 }
