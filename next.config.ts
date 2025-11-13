@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         hostname: "fnsvnvotzowxyongekui.supabase.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "storage.crisp.chat",
+        pathname: "/**",
+      },
     ],
   },
 };
