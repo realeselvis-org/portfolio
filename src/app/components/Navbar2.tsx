@@ -25,7 +25,7 @@ export default function Navbar2() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center">
+        <div className="relative flex h-14 items-center">
           {/* Botón menú móvil */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}

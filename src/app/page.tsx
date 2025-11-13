@@ -126,7 +126,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-24">
+    <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-18">
       {/* Upload
       <UploadImageForm />
       */}
@@ -136,7 +136,7 @@ export default function Home() {
           subtitle="Elvis Reales"
           title="Desarrollador de Soluciones"
           description="Desarrollador junior orientado a la creación de soluciones digitales. He trabajado en la depuración, integración y mantenimiento de plataformas como MasterTools y Mastershop."
-          image="https://res.cloudinary.com/dztv7fh2y/image/upload/v1760725827/perfil2_tvultr.jpg"
+          image="https://storage.crisp.chat/users/helpdesk/website/-/1/8/e/5/18e5ef9876c13600/image_1a2t9wu.png"
           actions={[
             {
               icon: <Mail className="w-4 h-4" />,
@@ -163,7 +163,7 @@ export default function Home() {
 
 
       {/* Timeline */}
-      <section id="timeline" className="mt-15 sm:mt-25">
+      <section id="timeline" className="">
         <h2 className="text-2xl font-allerta mb-10 sm:mb-15">Experiencia</h2>
         <Timeline events={timelineEvents} />
       </section>
