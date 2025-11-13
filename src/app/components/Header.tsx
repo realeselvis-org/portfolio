@@ -24,7 +24,7 @@ export default function Header({
   labels = [],
 }: Props) {
   return (
-    <div className="flex flex-col h-[calc(100vh-48px)] md:grid md:grid-cols-2 gap-12 md:items-stretch pb-12 justify-between">
+    <div className="flex flex-col h-[calc(100vh-48px)] md:grid md:grid-cols-2 gap-12 md:items-stretch pb-32 justify-between">
       {/* Imagen y labels */}
       <div className="flex flex-col items-center justify-center gap-12">
         <div>

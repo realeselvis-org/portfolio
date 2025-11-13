@@ -155,7 +155,7 @@ body {
 /* Componente: etiqueta adaptable a temas */
 @layer components {
   .custom-label {
-    @apply bg-lightdark/75 text-darklight px-2 py-0 rounded-2xl font-medium  h-fit w-fit text-xs mb-0 tracking-[.075em];
+    @apply bg-lightdark/75 text-darklight px-2 py-0 rounded-2xl font-semibold h-fit w-fit text-xs mb-0 tracking-[.075em];
   }
 
   .custom-text {
