@@ -137,7 +137,9 @@ body {
   .heading-gradient {
     font-family: "Allerta Stencil", sans-serif;
     letter-spacing: 0.1em;
-    background: linear-gradient(
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    /* 
+      background: linear-gradient(
       180deg,
       var(--h-grad-1) 0%,
       var(--h-grad-2) 55%,
@@ -148,6 +150,7 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    */
   }
   
 }
