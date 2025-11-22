@@ -41,7 +41,7 @@ const Timeline: React.FC<Props> = ({ events }) => {
             <div className="">
               <div className="items-center justify-between mb-3 mt-[-5px] sm:flex">
                 {event.time && (
-                  <time className="font-alumi font-normal text-sm md:text-base mb-0 tracking-[.075em]">
+                  <time className="font-alumi font-semibold text-sm md:text-base mb-0 tracking-[.075em]">
                     {event.time}
                   </time>
                 )}
