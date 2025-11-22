@@ -36,7 +36,7 @@ export default function ExperienceCard({
 
 
   return (
-    <div className="experienceCard flex flex-col h-[600px]  rounded-b-2xl">
+    <div className="experienceCard flex flex-col  rounded-b-2xl">
       {/* Sección 1: Título + acciones */}
       <div className="section1 flex items-center p-4 pb-8 bg-custom relative z-10 justify-between">
         <div className="flex gap-2  rounded">

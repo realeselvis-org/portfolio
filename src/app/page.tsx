@@ -77,7 +77,7 @@ export default function Home() {
 
   // Eventos para el Timeline
   const timelineEvents = [
-    {
+    /* {
       time: "Sep 2025 - Actualidad",
       tag: "Proyecto formativo",
       title: "Tecnología en Desarrollo de Software",
@@ -86,6 +86,7 @@ export default function Home() {
       // link: "/proyecto",
       // labels: ["Estudio "],
     },
+    */
     {
       time: "Jul 2024 - Actualidad",
       tag: "Ascenso",
@@ -114,6 +115,7 @@ export default function Home() {
       //link: "#",
       labels: ["Wordpress", "HTML", "Tailwind", "PHP", "SQL"],
     },
+    /*
     {
       time: "Mar 2022 - Sep 2023",
       tag: "Proyecto formativo",
@@ -123,6 +125,7 @@ export default function Home() {
       // link: "#",
       labels: ["Boostrap", "Python", "HTML", "JavaScript", "CSS", "PHP", "SQL"],
     },
+    */
   ];
 
   return (
@@ -169,12 +172,18 @@ export default function Home() {
       </section>
 
       {/* Grid de cards */}
-      <h2 className="text-2xl font-allerta pt-15 sm:pt-25">Proyects & Collabs</h2>
 
-      <section id="projects" className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-5 sm:mt-15">
-        {cardsData.map((c) => (
-          <ExperienceCard key={c.id} {...c} />
-        ))}
+      <section 
+        id="projects" 
+        // className="bg-red-200 h-svh"
+      >
+        <h2 className="text-2xl font-allerta pt-15 sm:pt-10">Proyects & Collabs</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-5 sm:mt-15">
+          {cardsData.map((c) => (
+            <ExperienceCard key={c.id} {...c} />
+          ))}
+        </div>
+
       </section>
 
     </main>
