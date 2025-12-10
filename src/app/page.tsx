@@ -230,7 +230,7 @@ export default function Home() {
     <Swiper
       modules={[Navigation, Pagination]}
       spaceBetween={20}
-      slidesPerView={3}
+      slidesPerView={1}
       navigation={{
         prevEl: prevRef.current,
         nextEl: nextRef.current,
@@ -252,6 +252,20 @@ export default function Home() {
       }}
       loop={true}
       className="w-full flex-1 mt-5 sm:mt-5 min-h-0 "
+      breakpoints={{
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      }}
     >
       {cardsData.map((c) => (
         <SwiperSlide key={c.id} className="h-full">
