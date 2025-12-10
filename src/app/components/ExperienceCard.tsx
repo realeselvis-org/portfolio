@@ -83,10 +83,9 @@ export default function ExperienceCard({
               }`}
           />
           <div
-            className={`flex flex-col ${isMobile ? "" : "justify-center flex-grow"
+            className={`flex flex-col ${isMobile ? "" : "justify-center"
               }`}
           >
-            <h3 className="font-mono font-light antialiased text-sm">{subtitle}</h3>
             <p className="font-mono font-thin antialiased text-xs">{description}</p>
           </div>
         </div>
