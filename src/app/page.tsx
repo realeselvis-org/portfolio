@@ -244,7 +244,7 @@ export default function Home() {
         if (prevRef.current && nextRef.current) {
           // @ts-expect-error - Swiper types pueden ser estrictos aquí
           swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-expect-error
+          // @ts-expect-error: dynamic import type mismatch
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
           swiper.navigation.update();
