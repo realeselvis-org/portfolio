@@ -2,21 +2,17 @@
 
 import { useRef } from "react";
 
-import { Github, Star, Rocket, CheckCircle2, Mail, GraduationCap, ArrowUpNarrowWide, SquareCode, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, Star, Mail, ArrowUpNarrowWide, SquareCode, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
 import Timeline from "./components/Timeline";
-import { UploadImageForm } from "./components/UploadImageForm";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-
-import dynamic from 'next/dynamic';
 
 
 export default function Home() {
@@ -246,9 +242,9 @@ export default function Home() {
       onInit={(swiper) => {
         // Asignar los elementos de navegación después de la inicialización
         if (prevRef.current && nextRef.current) {
-          // @ts-ignore - Swiper types pueden ser estrictos aquí
+          // @ts-expect-error - Swiper types pueden ser estrictos aquí
           swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-ignore
+          // @ts-expect-error
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
           swiper.navigation.update();
