@@ -1,11 +1,23 @@
 "use client";
 
-import { Github, Star, Rocket, CheckCircle2, Mail, GraduationCap, ArrowUpNarrowWide, SquareCode } from "lucide-react";
+import { useRef } from "react";
+
+import { Github, Star, Rocket, CheckCircle2, Mail, GraduationCap, ArrowUpNarrowWide, SquareCode, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Header from "./components/Header";
 import ExperienceCard from "./components/ExperienceCard";
 import Timeline from "./components/Timeline";
 import { UploadImageForm } from "./components/UploadImageForm";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
+import dynamic from 'next/dynamic';
+
 
 export default function Home() {
   const cardsData = [
@@ -128,6 +140,17 @@ export default function Home() {
     */
   ];
 
+  // Importación dinámica del componente Swiper
+  /*
+  const PortfolioSwiper = dynamic(
+    () => import('./components/SwiperDemo'),
+    { ssr: false }
+  );
+  */
+
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <main className="max-w-4xl 2xl:max-w-2/3 mx-auto p-8 pt-18">
       {/* Upload
@@ -173,18 +196,80 @@ export default function Home() {
 
       {/* Grid de cards */}
 
-      <section 
-        id="projects" 
-        // className="bg-red-200 h-svh"
-      >
-        <h2 className="text-2xl font-allerta pt-15 sm:pt-10">Proyects & Collabs</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 mt-5 sm:mt-15">
-          {cardsData.map((c) => (
-            <ExperienceCard key={c.id} {...c} />
-          ))}
-        </div>
-
+      {/* 
+      <section>
+        <h1>Mi Portfolio</h1>
+        <PortfolioSwiper />
       </section>
+      */}
+
+<section
+  id="projects"
+  className="flex flex-col h-svh" // <- Section toma altura completa
+>
+  <div className="relative w-full flex-1 flex flex-col min-h-0"> 
+    {/* ^ flex-1 para crecer, flex flex-col para layout vertical, min-h-0 para permitir shrink */}
+    
+    {/* Botones personalizados */}
+    <button 
+      ref={prevRef}
+      className="swiper-button-prev custom-prev absolute top-1/2 left-[-60px] -translate-y-1/2 z-50 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-primary/80 hover:bg-primary text-secondary transition-all duration-300 hover:scale-110 shadow-custom"
+      aria-label="Slide anterior"
+    >
+      <ChevronLeft className="w-6 h-6" />
+    </button>
+    <button 
+      ref={nextRef}
+      className="swiper-button-next custom-next absolute top-1/2 right-[-360px] -translate-y-1/2 z-50 cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-primary/80 hover:bg-primary text-secondary transition-all duration-300 hover:scale-110 shadow-custom"
+      aria-label="Slide siguiente"
+    >
+      <ChevronRight className="w-6 h-6" />
+    </button>
+
+     
+    <h2 className="text-2xl font-allerta pt-15 sm:pt-10">
+      Proyects & Collabs
+    </h2>
+    
+    <Swiper
+      modules={[Navigation, Pagination]}
+      spaceBetween={20}
+      slidesPerView={3}
+      navigation={{
+        prevEl: prevRef.current,
+        nextEl: nextRef.current,
+      }}
+      pagination={{
+        el: '.custom-pagination',
+        clickable: true,
+      }}
+      onInit={(swiper) => {
+        // Asignar los elementos de navegación después de la inicialización
+        if (prevRef.current && nextRef.current) {
+          // @ts-ignore - Swiper types pueden ser estrictos aquí
+          swiper.params.navigation.prevEl = prevRef.current;
+          // @ts-ignore
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }
+      }}
+      loop={true}
+      className="w-full flex-1 mt-5 sm:mt-5 min-h-0 "
+    >
+      {cardsData.map((c) => (
+        <SwiperSlide key={c.id} className="h-full">
+          <ExperienceCard {...c} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+    
+  </div>
+  
+  {/* Paginación fuera del div relativo pero dentro de la section */}
+  <div className="custom-pagination mt-5 pb-4 flex justify-center"></div>
+  {/* ^ pb-4 para espacio inferior */}
+</section>
 
     </main>
   );
