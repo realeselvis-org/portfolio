@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import AnalystInteractivePage from "./analista/components/AnalystInteractivePage";
+import AnalystInteractivePage from "./components/AnalystInteractivePage";
 
 export const metadata: Metadata = {
   title: "Analista de Aplicaciones | SQL | Analista TI — Elvis Reales",
@@ -8,6 +8,6 @@ export const metadata: Metadata = {
     "Perfil profesional orientado al análisis de aplicaciones, soporte TI, SQL, bases de datos, troubleshooting e integración de sistemas.",
 };
 
-export default function Home() {
+export default function AnalistaPage() {
   return <AnalystInteractivePage />;
 }
