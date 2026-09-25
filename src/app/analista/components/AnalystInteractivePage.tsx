@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Activity,
   ArrowDown,
@@ -100,6 +100,13 @@ const primarySkills = ["SQL", "MySQL", "Bases de datos", "Troubleshooting", "Sop
 const complementarySkills = ["PHP", "WordPress", "JavaScript", "HTML", "Linux"];
 const developmentSkills = ["React", "Next.js", "TypeScript", "Tailwind"];
 
+const rotatingTitles = [
+  "Datos",
+  "SQL",
+  "Soporte",
+  "Software",
+];
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="mb-3 font-jetmono text-xs uppercase tracking-[0.18em] text-primary">{children}</p>;
 }
@@ -113,15 +120,61 @@ export default function AnalystInteractivePage() {
   const [activeDiagnosticStep, setActiveDiagnosticStep] = useState(0);
   const [openCase, setOpenCase] = useState(0);
   const [openExperience, setOpenExperience] = useState<number | null>(null);
+
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayedTitle, setDisplayedTitle] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+
   const currentDataStep = dataFlow[activeDataStep];
   const CurrentDataIcon = currentDataStep.icon;
+
+  useEffect(() => {
+    const currentTitle = rotatingTitles[titleIndex];
+
+    const typingSpeed = 100;
+    const deletingSpeed = 60;
+    const pauseAfterTyping = 1600;
+
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayedTitle.length < currentTitle.length) {
+      timeout = setTimeout(() => {
+        setDisplayedTitle(currentTitle.slice(0, displayedTitle.length + 1));
+      }, typingSpeed);
+    } else if (!isDeleting && displayedTitle.length === currentTitle.length) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseAfterTyping);
+    } else if (isDeleting && displayedTitle.length > 0) {
+      timeout = setTimeout(() => {
+        setDisplayedTitle(currentTitle.slice(0, displayedTitle.length - 1));
+      }, deletingSpeed);
+    } else {
+      setIsDeleting(false);
+      setTitleIndex((currentIndex) => (currentIndex + 1) % rotatingTitles.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedTitle, isDeleting, titleIndex]);
+
 
   return (
     <main className="mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pt-20 lg:pt-20">
       <section className="grid min-h-0 items-center gap-10 py-8 lg:min-h-[calc(100svh-8rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-8">
         <div>
           <SectionLabel>Elvis Reales / Perfil profesional</SectionLabel>
-          <h1 className="heading-gradient text-5xl leading-none sm:text-7xl">Analista de<br />Aplicaciones</h1>
+          <h1 className="heading-gradient text-5xl leading-none sm:text-7xl">
+            Analista TI
+            <br />
+            <span
+              className="rotating-title inline-block min-w-[8ch]"
+              aria-live="polite"
+            >
+              {displayedTitle}
+              <span className="ml-1 animate-pulse">|</span>
+            </span>
+          </h1>
           <p className="mt-6 font-allerta text-xl text-primary sm:text-2xl">SQL · Datos · Soporte TI</p>
           <p className="mt-6 max-w-xl text-base leading-7 text-foreground/80 sm:text-lg">Investigo problemas de aplicaciones relacionando datos, sistemas e integraciones.</p>
           <div className="mt-8 flex flex-wrap gap-3">

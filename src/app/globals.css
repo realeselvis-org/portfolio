@@ -35,7 +35,7 @@ html.dark-custom {
   --bgclick: #00514B;
   --byw: #000000;
 
-  /* Colores para degradado de h1 y h2 */  
+  /* Colores para degradado de h1 y h2 */
   --h-grad-1: #fcffff;
   --h-grad-2: #fcffff;
   --h-grad-3: #181818;
@@ -56,7 +56,7 @@ html.light {
 
 
 
-  /* Colores para degradado de h1 y h2 */  
+  /* Colores para degradado de h1 y h2 */
   --h-grad-1: #000000;
   --h-grad-2: #050505;
   --h-grad-3: #121212;
@@ -76,7 +76,7 @@ html.light {
   --byw: #ffffff;
 
 
-  /* Colores para degradado de h1 y h2 */  
+  /* Colores para degradado de h1 y h2 */
   --h-grad-1: #0b3030;
   --h-grad-2: #0f4a48;
   --h-grad-3: #1c6b66;
@@ -95,7 +95,7 @@ html.light {
   --byw: #ffffff;
 
 
-  /* Colores para degradado de h1 y h2 */  
+  /* Colores para degradado de h1 y h2 */
   --h-grad-1: #0b1220;
   --h-grad-2: #07203a;
   --h-grad-3: #0b4a9e;
@@ -152,7 +152,17 @@ body {
     -webkit-text-fill-color: transparent;
     */
   }
-  
+
+  .rotating-title {
+    display: inline-block;
+    color: var(--primary);
+    font-family: "Allerta Stencil", sans-serif;
+    letter-spacing: 0.08em;
+    text-shadow:
+      0 0 8px rgba(29, 218, 210, 0.45),
+      0 0 20px rgba(29, 218, 210, 0.2);
+  }
+
 }
 
 /* Componente: etiqueta adaptable a temas */
@@ -168,7 +178,7 @@ body {
   }
 
   .custom-button {
-    @apply h-6 w-auto bg-primary text-secondary  px-2 py-1 rounded-sm flex items-center hover:bg-[#00c0c0] hover:[text-shadow:0_0_7px_rgba(29,218,210,1)] hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,218,210,1)] transition-all duration-300 ease-in-out text-sm cursor-pointer active:scale-95 ;
+    @apply h-6 w-auto bg-primary text-secondary px-2 py-1 rounded-sm flex items-center hover:bg-[#00c0c0] hover:[text-shadow:0_0_7px_rgba(29,_218,_210,_1)] hover:scale-110 hover:shadow-[0_0_7px_1px_rgba(29,_218,_210,_1)] transition-all duration-300 ease-in-out text-sm cursor-pointer active:scale-95;
 
   }
 }
@@ -177,7 +187,7 @@ body {
 .swiper {
   height: 100% !important;
   padding: 20px 10px 30px 10px !important;
-  
+
 }
 
 .swiper-wrapper {
@@ -214,6 +224,7 @@ body {
     width: 10px !important;
     height: 10px !important;
   }
+
   .custom-next.swiper-button-next {
     right: -150px !important;
   }
